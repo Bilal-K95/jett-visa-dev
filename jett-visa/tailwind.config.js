@@ -19,6 +19,20 @@ module.exports = {
       boxShadow: {
         'soft': '0 2px 8px rgba(0, 0, 0, 0.08)',
       },
+      keyframes: {
+        scrollUp: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-50%)' },
+        },
+        scrollDown: {
+          '0%': { transform: 'translateY(-50%)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        scrollUp: 'scrollUp 30s linear infinite',
+        scrollDown: 'scrollDown 30s linear infinite',
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -68,7 +68,7 @@ const ScrollingDestinationImages: React.FC<ScrollingDestinationImagesProps> = ({
     // Using static data for testing - replace with API hook when ready
     const topDestinationList = staticTopDestinations;
     const isTopDestinationListPending = false;
-    
+
     const { i18n } = useTranslation();
     const isRTL = i18n.dir() === "rtl";
 
@@ -88,36 +88,64 @@ const ScrollingDestinationImages: React.FC<ScrollingDestinationImagesProps> = ({
     const renderColumn = (columnItems: TopDestination[], columnIndex: number) => {
         const duplicatedItems = duplicateItems(columnItems);
         return (
-            <div key={columnIndex} className="flex-1 flex flex-col items-center min-w-[140px] md:min-w-[172px]">
-                <div className="flex flex-col gap-3 animate-[scroll_35s_linear_infinite] hover:pause">
-                    {duplicatedItems.map((destination, itemIndex) => {
-                        const imageUrl = destination.Images?.[0]?.Filename || '';
-                        const countryName = destination.Name || '';
-                        const uniqueKey = `${destination.IsoCode2}-${columnIndex}-${itemIndex}`;
+            <div
+                key={columnIndex}
+                className="flex flex-col items-center shrink-0 w-[140px] md:w-[172px]"
+            >
+                <div className="overflow-hidden">
+                    <div className={`flex flex-col gap-3 m-2 ${
+      columnIndex % 2 === 0 ? 'animate-scrollUp' : 'animate-scrollDown'
+    }`}>
+                        {duplicatedItems.map((destination, itemIndex) => {
+                            const imageUrl = destination.Images?.[0]?.Filename || '';
+                            const countryName = destination.Name || '';
+                            const uniqueKey = `${destination.IsoCode2}-${columnIndex}-${itemIndex}`;
 
-                        return (
-                            <div key={uniqueKey} className="relative w-[140px] md:w-[172px] h-[172px] md:h-[212px] rounded-[20px] overflow-hidden cursor-pointer border-4 border-white shadow-md hover:scale-105 transition-transform">
-                                <img src={imageUrl} alt={countryName} loading="lazy" className="w-full h-full object-cover" />
-                                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                                    <div className="px-4 py-2 rounded-md bg-transparent text-center">
-                                        <span className="text-transparent font-semibold">{countryName}</span>
-                                    </div>
+                            return (
+                                <div
+                                    key={uniqueKey}
+
+                                    className="relative w-full h-[172px] md:h-[212px] rounded-[20px] overflow-hidden cursor-pointer border-4 border-white shadow-md hover:scale-[1.03] transition-transform ">
+                                    <img
+                                        src={imageUrl}
+                                        alt={countryName}
+                                        loading="lazy"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
+
         );
     };
 
     return (
-        <div className={`absolute top-[-188px] ${isRTL ? 'left-[650px]' : 'right-[90px]'} transform ${isRTL ? 'rotate-15' : '-rotate-15'} z-10 w-full max-w-[calc(100%-20px)]`}>
-            <div className="flex gap-4 px-4 py-4 bg-gradient-to-b from-transparent via-transparent to-[rgba(160,224,227,0.3)]">
-                {columns.map((columnItems, columnIndex) => renderColumn(columnItems, columnIndex))}
-            </div>
-            <div className={`absolute bottom-[-50px] left-1/2 ${isRTL ? 'translate-x-[30%]' : '-translate-x-[30%]'} w-[120%] h-[500px]`} style={{ background: 'linear-gradient(to top, rgba(92, 183, 188, 0.7) 0%, rgba(105, 184, 188, 0.5) 20%, rgba(51, 110, 113, 0.3) 50%, transparent 100%)', filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0 }} />
+        <div
+            className="
+          absolute
+          top-[-358.39px]
+          left-[690px]
+          w-full
+          flex
+          p-[20px_20px_20px_10px]
+          z-[1]
+          origin-right
+          -rotate-[15deg]
+        "
+            style={{
+                height: '738.85px',
+                background:
+                    'linear-gradient(transparent 0%, transparent 85%, rgba(160, 224, 227, 0.3) 100%)',
+            }}
+        >
+            {columns.map((columnItems, columnIndex) =>
+                renderColumn(columnItems, columnIndex)
+            )}
         </div>
+
     );
 };
 

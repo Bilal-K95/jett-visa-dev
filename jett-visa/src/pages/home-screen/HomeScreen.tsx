@@ -139,9 +139,142 @@ const UpdateResidencyDialog = ({ open, onClose, initialNationality, initialResid
     </div>
   );
 };
-const NationalityResidencySelector = ({ nationality, residency, onNationalityChange, onResidencyChange, countryList }: any) => (
-  <div className="p-4 border rounded-lg">Nationality/Residency Selector</div>
-);
+
+const dummyCities = [
+  { code: 'IQ', name: 'Iraqi', flag: 'https://flagcdn.com/w20/iq.png' },
+  { code: 'JM', name: 'Jamaican', flag: 'https://flagcdn.com/w20/jm.png' },
+  { code: 'KZ', name: 'Kazakhstani', flag: 'https://flagcdn.com/w20/kz.png' },
+  { code: 'KE', name: 'Kenyan', flag: 'https://flagcdn.com/w20/ke.png' },
+  { code: 'KP', name: 'North Korean', flag: 'https://flagcdn.com/w20/kp.png' },
+]; 
+
+const NationalityResidencySelector = ({
+  nationality,
+  residency,
+  onNationalityChange,
+  onResidencyChange,
+}: any) => {
+
+  const [openNationality, setOpenNationality] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const filteredList = dummyCities.filter(item =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+  return (
+    <div className="relative w-full max-w-4xl mx-auto z-50">
+      {/* Main pill */}
+      <div className="flex items-center justify-between rounded-full bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-md px-6 py-4 shadow-sm">
+        
+        {/* Nationality trigger */}
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={() => setOpenNationality(prev => !prev)}
+        >
+          <span className="text-sm text-gray-400">Nationality</span>
+          <svg
+            className={`w-4 h-4 text-gray-500 transition-transform ${
+              openNationality ? 'rotate-180' : ''
+            }`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+
+        {/* Divider */}
+        <div className="h-8 w-px bg-gray-200 mx-6" />
+
+        {/* Residency */}
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={onResidencyChange}
+        >
+          <img
+            src="https://flagcdn.com/w20/in.png"
+            alt="India"
+            className="w-5 h-5 rounded-full"
+          />
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm text-gray-400">Residency</span>
+            <span className="text-base font-semibold text-gray-900">
+              India
+            </span>
+          </div>
+          <svg
+            className="w-4 h-4 text-gray-500 ml-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Nationality dropdown */}
+      {openNationality && (
+        <div className="absolute left-0 mt-3 w-[320px] rounded-2xl bg-white shadow-xl border border-gray-100 z-[9999]">
+          
+          {/* Header */}
+          <div className="px-5 pt-5 pb-3">
+            <h3 className="text-lg font-semibold text-[#0B3C6F]">
+              Search nationality
+            </h3>
+          </div>
+
+          {/* Search */}
+          <div className="px-5 pb-4">
+            <div className="relative">
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full h-12 rounded-full border-2 border-gray-200 pl-4 pr-10 focus:outline-none focus:border-blue-400"
+              />
+              <svg
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-blue-500"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* List */}
+          <div className="max-h-[280px] overflow-y-auto">
+            {filteredList.map(item => (
+              <div
+                key={item.code}
+                onClick={() => {
+                  onNationalityChange?.(item);
+                  setOpenNationality(false);
+                }}
+                className="flex items-center gap-4 px-5 py-3 cursor-pointer hover:bg-blue-50 transition"
+              >
+                <img
+                  src={item.flag}
+                  alt={item.name}
+                  className="w-6 h-6 rounded-full"
+                />
+                <span className="text-base text-[#1E5AA8] font-medium">
+                  {item.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const TopBar = ({ variant, flagIcon, isLoggedIn, onFlagClick, onLogoClick, onSearchClick, onMenuClick, isFixed, showSearchIcon }: any) => (
   <div className={`bg-white border-b p-4 flex items-center justify-between ${isFixed ? 'fixed top-0 left-0 right-0 z-50' : ''}`}>
     <div>Logo</div>
@@ -514,7 +647,7 @@ const HomeScreen = () => {
           className="w-full"
         >
           <div
-            className="relative w-full flex flex-col justify-center border-b border-[#1976d2] rounded-b-[20px] pb-10 pt-[60px] px-[180px] min-h-[634px] md:pb-10 md:pt-[60px] md:px-[180px] md:min-h-[634px] sm:pb-[30px] sm:pt-10 sm:px-4 sm:min-h-auto sm:items-center"
+            className="relative w-full flex flex-col justify-center border-b border-[#1976d2] rounded-b-[20px] pb-10 pt-[60px] px-[180px] min-h-[547px] md:pb-10 md:pt-[60px] md:pr-[180px] md:min-h-[547px] sm:pb-[30px] sm:pt-10 sm:px-4 sm:min-h-auto sm:items-center"
             style={{
               backgroundImage: isMobile 
                 ? `linear-gradient(200deg, #e7c0eeff, #a0e0e3ff 100%),linear-gradient(to top right, #dbd68fff 0%, transparent 50%)`
