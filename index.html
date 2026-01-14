@@ -1,0 +1,2583 @@
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	AgileBrain
+</title><meta name="viewport" content="width=device-width, initial-scale=1" /><meta http-equiv="CACHE-CONTROL" content="NO-CACHE, NO-STORE, MUST-REVALIDATE" /><meta http-equiv="PRAGMA" content="NO-CACHE" /><meta http-equiv="EXPIRES" content="0" /><link rel="stylesheet" type="text/css" href="MyAgileBrainResultsPrint.css" media="print" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background: #f5f5f5;
+            font-size: 18px;
+        }
+        div.row {
+            margin-bottom: 1vw;
+        }
+
+            div.row > div.label, .header {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 2vw;
+                color:#0D5998; 
+                padding-left:0px;
+            }
+
+            div.row > div.mylabel {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 1vw;
+                color:#0D5998; 
+                padding-left:0px;
+            }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        div.row > div.description {
+            font-size: 18px;
+        }
+
+        .feedbackTableHeader {
+            background-color: #2296CD;
+            color: #FFFFFF; /*#0D5998;*/
+            font-weight: bold;
+            font-size: 20px;
+            border: none;
+            padding: 15px;
+            vertical-align: middle !important;
+            padding-left:0px;
+        }
+
+        .prescriptionTableHeader {
+            background-color: #0D5998;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border: none;
+            padding:15px;
+            padding-left:0px;
+            vertical-align: middle !important;
+        }
+
+        .yourReflectionsTableHeader {
+            background-color: rgb(0, 112, 192);
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: 1px solid black;
+            vertical-align: middle !important;
+        }
+
+        .yourReflectionsSpace {
+            height: 134px;
+        }
+
+        .separator {
+            display: block;
+            height: 1px !important;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            border: none;
+            border-top: solid 1px #2296CD !important;
+        }
+
+        .hr-separator {
+            width: 100%;
+            height: 2px;
+            margin-top: 2px;
+            margin-bottom: 16px;
+            border: none;
+            border-top: solid 2px #337AB7 !important;
+        }
+
+        .spacer {
+            height: 36px;
+        }
+
+        .forPrinting, .forPrintingLandscape {
+            display: none;
+        }
+
+        .intro {
+            display: flex !important;
+            justify-content: space-between;
+        }
+
+        .titleArea {
+            display: block;
+            margin-top: 8px;
+            /*margin-left: 15px;*/
+        }
+
+        .imageArea {
+            /*display: block;*/
+            /*width: 100%;
+            height: auto;*/
+            /*margin-top: 24px;
+            margin-right: 24px;*/
+            text-align: right;
+        }
+        .modal-title {
+            font-size: 20px;
+        }
+       .modal-body{
+           margin: -40px 35px 25px 35px;
+           padding:0px;
+           width:60vw;
+       }
+       .imageWrapper{
+           height:auto;
+           color:white;
+           padding:8px;
+           border-radius:10px;
+           margin-top:10px;
+           margin-bottom:10px
+       }
+        .custom-centered {
+             display: flex;
+             align-items: center;   
+             min-width:300px;
+             justify-content: center;
+             min-height: 100vh;
+            }
+        .modal-content {
+            border:0px; 
+            /*margin-bottom:10px;*/
+        }
+        .modal-feedback{
+            padding-top:10px;
+            font-size:17px;
+        }
+         .modal-header {
+            border-radius:10px;
+            border:0px;
+            text-align:center;
+            font-size:22px;
+        }
+         .modal-footer{
+             border:0px;
+         }
+         .modal-close{
+             text-align:end;
+            
+         }
+         .close-btn{
+         background-color:white;
+         font-size: 31px;
+         padding: 1px 9px;                
+         }
+        .imageArea > img {
+                max-width: 125px !important;
+                /*max-height: 100%;*/
+            }
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .name {
+            font-size: 30px;
+            font-weight: bold;
+            color: #2296CD;
+        }
+        .itemTextPlacementFirstPage {
+            /*margin-left: 15px;*/
+        }
+        .itemTextLeadIn {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .itemText {
+            font-size: 18px;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .printButtonContainer {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 24px;
+            margin-top: 24px;
+        }
+
+        .printButtonXXX, .scheduleDebriefButtonXXX {
+            font-size: 18px;
+            background-color: darkblue;
+            color: white;
+            font-weight: bold;
+            border: solid darkblue;
+            border-radius: 5px;
+            margin-left: 24px;
+            margin-right: 24px;
+            margin-bottom: 24px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .confidentialityStatement {
+            margin-bottom: 12px;
+        }
+
+        .preGraphicSpacer {
+            height: 24px;
+        }
+         @media (max-width: 576px) {
+            .modal-content {
+        max-width: 80%; /* Adjust the value as needed */
+        height:55vh;
+        overflow-y:auto;
+        }
+        }
+         @media (max-width: 912px) and (orientation: landscape) {
+        .modal-content {
+       
+        height:55vh;
+        overflow-y:auto;
+        }
+        }
+        /*@media print and (orientation: landscape) {
+            @page {
+                size: auto;
+                margin: 0mm;
+            }
+
+            body {
+                margin: 30px;
+            }
+
+            .excludeFromLandscapePrinting {
+                display: none;
+            }
+
+            .forPrintingLandscape {
+                display: block;
+            }
+        }*/
+
+
+        /*@media print { body * {visibility: hidden; } DivContent {visibility: visible;} }*/
+
+        /*@media print {
+            
+            @page {
+                size: auto;
+                margin: 0mm;  
+            
+            }
+
+            body {
+                margin: 30px;
+                font-size: 18px;
+               
+            }
+            DivContent {
+                visibility: visible;
+
+            }
+
+            .pagebreak {
+                page-break-before: always;
+            }
+
+            .forPrinting {
+                display: block;
+            }
+
+            .forPrintingLandscape {
+                display: none;
+            }
+
+            .excludeFromPrinting {
+                display: none;
+            }
+
+            .feedbackTableHeader {
+                background-color: white;
+                font-weight: bold;
+                font-size: 20px;
+                border: 6px solid #2296CD;
+                padding: 15px;
+                vertical-align: middle !important;
+            }
+
+            .prescriptionTableHeader {
+                background-color: white;
+                color: #0D5998;
+                font-weight: bold;
+                font-size: 20px;
+                border: 6px solid #0D5998;
+                padding:15px;
+                vertical-align: middle !important;
+            }
+
+            .yourReflectionsTableHeader {
+                background-color: rgb(0, 112, 192);
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                border: 6px solid rgb(0, 112, 192);
+                vertical-align: middle !important;
+            }
+
+           
+
+        }*/
+
+        .div-section {
+            margin: 10px 0px 10px 0px;
+            padding: 0px 15px 0px 15px;
+            border-radius: 5px;
+        }
+
+        .div-input-text {
+            margin: 10px;
+        }
+
+        .input-text {
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: #AAA9A9;
+            width: 400px;
+            padding: 5px;
+        }
+
+        .submit-button {
+            margin: 10px;
+            text-align: left;
+        }
+
+        .button, .printButton, .scheduleDebriefButton {
+            margin-top: 10px;
+            margin-right: 10px;
+            font-size: 20px;
+            border-radius: 30px;
+            border: none;
+            min-width: 120px;
+            height: 30px;
+            background-color:#2874B3;
+            color: white;
+        }
+
+        .button:hover, .printButton:hover, .scheduleDebriefButton:hover {
+            font-size: 20.25px
+        }
+
+        #btnContactUs {
+            min-width: 300px;
+        }
+
+        /*.div-lbl-save, .div-save-button, .div-share-button, .div-lbl-share {
+            display: inline-block;
+        }*/
+        .activationMessage {
+            color: #337AB7; /*rgb(237, 125, 49);*/
+            min-height: 40px;
+        }
+
+        .div-lbl-save, .div-lbl-share, .div-lbl-contactus {
+            color: #337AB7;
+            margin-left: 10px;
+        }
+
+        .input-checkbox {
+            height: 18px;
+            width: 18px;
+        }
+
+        .div-input-checkbox {
+            margin-left: 11px;
+            margin-top: 8px;
+        }
+
+        .div-lbl-contactus {
+            height: 24px;
+        }
+
+        ul {
+            line-height:1.4em;
+        }
+
+        /*.hr-separator {
+            width: 100%;
+            height: 2px;
+            background-color: #337AB7;
+            margin-top: 0px;
+        }*/
+
+        a {
+            color: #337AB7;
+        }
+
+        a:hover {
+            color: #337AB7;
+        }
+
+        label {
+            display: block;
+            padding-left: 20px;
+            text-indent: -23px;
+        }
+
+        #divShareSection {
+            margin-top: 24px;
+        }
+
+        #spinner {
+            color: #337AB7;
+        }
+
+        .HideFromVisitors {
+            display: none;
+        }
+
+        .HideFromOwner {
+            
+        }
+        
+    </style>
+     <link rel='icon' type='image/x-icon' href='https://content.leadingindicator.com/Images/favicon.ico'></head>
+
+<body id="body" onresize="start(5)">
+    <form name="form1" method="post" action="./myagilebrainresultsabp.aspx?g=5610AAB9-647F-4CCB-8854-8D86B1893795&amp;guid=3E2BDDED-7A14-40A5-87D0-79045E370433" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTMzMzY0NTEwMg9kFgICAg8WAh4EVGV4dAWargE8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQogICAgdmFyIHV0aWwgPSBuZXcgT2JqZWN0KCk7DQogICAgdXRpbC5nZXRIZWFkZXIgPSBmdW5jdGlvbih0cykNCiAgICB7DQogICAgICAgIHZhciBoZWFkZXIgPSBuZXcgT2JqZWN0KCk7DQogICAgICAgIGhlYWRlci5XZWJTZXJ2aWNlQXV0aG9yaXphdGlvbkd1aWQgPSAnOTYwNWVlM2UtYzhiOC00ODUyLThlNGYtY2ZlZmViYjcyYzUwJzsNCiAgICAgICAgaGVhZGVyLkVpZCA9IDUyOw0KICAgICAgICBoZWFkZXIuVXNlcklkID0gMTU2NDg7DQogICAgICAgIGhlYWRlci5Qcm9qZWN0SWQgPSAxOw0KICAgICAgICBoZWFkZXIuTGFuZ3VhZ2VJZCA9IDE7DQogICAgICAgIGhlYWRlci5DdWx0dXJlSWRlbnRpZmllciA9ICdlbi1VUyc7DQogICAgICAgIGhlYWRlci5EYXRlVGltZUZvcm1hdCA9ICcnOw0KICAgICAgICBoZWFkZXIuVGltZXN0YW1wID0gdHM7DQogICAgICAgIHJldHVybiBoZWFkZXI7DQogICAgfTsNCg0KICAgIHZhciBzZXNzaW9uID0gbmV3IE9iamVjdCgpOw0KICAgIHNlc3Npb24uc2VsZWN0ZWRFdmVudCA9IG51bGw7DQogICAgc2Vzc2lvbi5kcm9wRG93blByb21wdCA9ICctLSBDaG9vc2UgLS0nOw0KICAgIHNlc3Npb24ucG9sbGluZ01lc3NhZ2UgPSAnVXBkYXRpbmcuLi4nOw0KICAgIHNlc3Npb24uaXNPbmxpbmUgPSBudWxsOw0KICAgIHNlc3Npb24uZGVmYXVsdFdlYlNlcnZpY2VUaW1lb3V0ID0gMTIwMDAwOw0KICAgIHNlc3Npb24uY2hhbmdlZENvdW50ZXIgPSAwOw0KICAgIHNlc3Npb24ucG9ydGFsID0gbmV3IE9iamVjdCgpOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IG51bGwNCiAgICBzZXNzaW9uLnBvcnRhbC5zdGF0dXNFdmVudFNvcnRMaXN0ID0gW1swLDBdXTsNCiAgICBzZXNzaW9uLnBvcnRhbC5zdGF0dXNFdmVudERhdGFTb3J0TGlzdCA9IFtbMCwwXV07DQogICAgc2Vzc2lvbi5wb3J0YWwuc3RhdHVzRXZlbnREYXRhU29ydExpc3QyID0gW1swLDBdXTsNCiAgICBzZXNzaW9uLnBvcnRhbC5ldmVudFJldmlld1NvcnRMaXN0ID0gW1swLDBdXTsNCiAgICBzZXNzaW9uLnBvcnRhbC5ldmVudFJldmlld0RhdGFTb3J0TGlzdCA9IFtbMCwwXV07DQogICAgc2Vzc2lvbi5wb3J0YWwuZXZlbnRSZXZpZXdEYXRhU29ydExpc3QyID0gW1swLDBdXTsNCiAgICBzZXNzaW9uLnBvcnRhbC5kZWJ1ZyA9IGZhbHNlOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9ICcnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLXN1cnZleSB7IGJhY2tncm91bmQtY29sb3I6ICMxQjkxOEU7IH0nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLXN1cnZleS1wYXJ0IHsgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7IH0nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLWl0ZW0tdGFnIHsgY29sb3I6ICM0NDU1NWY7IGZvbnQtc2l6ZTogMC45ZW07IHRleHQtYWxpZ246IGxlZnQ7IHdpZHRoOiAwcHg7IH0nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLXdyYXBwZXItdGV4dCB7IHBhZGRpbmc6IDdweCAwcHggN3B4IDBweDsgdmVydGljYWwtYWxpZ246IHRvcDsgfSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJy5saXMtaXRlbS10ZXh0IHsgY29sb3I6ICM0NDU1NWY7IGZvbnQtc2l6ZTogMi41ZW07IHRleHQtYWxpZ246IGxlZnQ7IHdpZHRoOiAxMDAlOyB9JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnLmxpcy1zZWN0aW9uLWhlYWRlciB7IHBhZGRpbmc6IDNweCAwcHggMHB4IDBweDsgfSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJy5saXMtc2VjdGlvbi1zZWNvbmRjaGFuY2UgeyBjb2xvcjogQmxhY2s7IGZvbnQtc2l6ZTogMS41ZW07IGZvbnQtd2VpZ2h0OiBib2xkOyB0ZXh0LWFsaWduOiBjZW50ZXI7fSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3RhYmxlLnBzZXVkb3NjYWxlIHRkOm50aC1jaGlsZCgxKSB7IGJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwczovL2FwcC5sZWFkaW5naW5kaWNhdG9yLmNvbS9wb3J0YWx1eC9zbWFsbGVyLWNoYWxrLXRleHR1cmUuanBnKSAhaW1wb3J0YW50OyB9JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAndGFibGUucHNldWRvc2NhbGUgdGQ6bnRoLWNoaWxkKDUpIHsgYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vYXBwLmxlYWRpbmdpbmRpY2F0b3IuY29tL3BvcnRhbHV4L3NtYWxsZXItY2hhbGstdGV4dHVyZS5qcGcpICFpbXBvcnRhbnQ7IH0nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICd0ZXh0YXJlYS5saXMtb3Blbi1lbmQgeyBmb250LWZhbWlseTogQXJpYWwsIFZlcmRhbmE7IGZvbnQtc2l6ZTogMS44ZW07IGJhY2tncm91bmQtY29sb3I6ICNFRUVFRUUgIWltcG9ydGFudDsgcGFkZGluZzogM3B4IDlweCAhaW1wb3J0YW50OyBib3JkZXItcmFkaXVzOiA1cHggIWltcG9ydGFudDsgfSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3RkLmxpcy1vcGVuLWVuZCB7IHRleHQtYWxpZ246IGNlbnRlciB9JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAndGQubGlzLXdyYXBwZXItdGFnIHsgd2lkdGg6IDBweDsgcGFkZGluZzogMHB4OyB9JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnLmxpcy1idXR0b24tY29udGFpbmVyIHsgd2lkdGg6IDc2MHB4OyBtYXJnaW4tdG9wOiAzNXB4ICFpbXBvcnRhbnQ7IH0nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLWJ1dHRvbi1jb250YWluZXIgdGFibGU6Zmlyc3QtY2hpbGQgeyBtYXJnaW46IGF1dG87IGJvcmRlcjogMHB4O30nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICdidXR0b24nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICd7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIGJvcmRlci1yYWRpdXM6IDVweCAhaW1wb3J0YW50Oyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICBwYWRkaW5nOiA2cHggMTJweCAhaW1wb3J0YW50Oyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICBjdXJzb3I6IHBvaW50ZXI7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIGJhY2tncm91bmQtY29sb3I6ICNmMDRlM2UgIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgZm9udC1zaXplOiAxLjByZW0gIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgZm9udC13ZWlnaHQ6IGJvbGQgIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgYm9yZGVyOiAxcHggc29saWQgI0ZGRkZGRiAhaW1wb3J0YW50Oyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICB0ZXh0LWRlY29yYXRpb246IG5vbmUgIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgdHJhbnNpdGlvbi1kdXJhdGlvbjogMC41czsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgLXdlYmtpdC10cmFuc2l0aW9uLWR1cmF0aW9uOiAwLjVzOyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICAtbW96LXRyYW5zaXRpb24tZHVyYXRpb246IDAuNXM7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIHRleHQtYWxpZ246IGNlbnRlcjsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgbWFyZ2luLXJpZ2h0OiA2cHg7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIHRleHQtb3ZlcmZsb3c6IGVsbGlwc2lzOyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICB3aGl0ZS1zcGFjZTogbm93cmFwOyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICBvdmVyZmxvdzogaGlkZGVuOyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICBoZWlnaHQ6IDMwcHggIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lOyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICAtbW96LWFwcGVhcmFuY2U6IG5vbmU7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIGFwcGVhcmFuY2U6IG5vbmU7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIG9wYWNpdHk6IDE7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnfSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ2J1dHRvbjpob3Zlcic7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3snOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgYmFja2dyb3VuZC1jb2xvcjogZmlyZWJyaWNrICFpbXBvcnRhbnQ7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnICAgIGJvcmRlcjogMXB4IHNvbGlkIGZpcmVicmljayAhaW1wb3J0YW50Oyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ30nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICdpbnB1dFt0eXBlPXJhZGlvXSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3snOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgdHJhbnNmb3JtOiBzY2FsZSgzKTsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgbWFyZ2luLXRvcDogMnB4Oyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ30nOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcubGlzLXNlY3Rpb24tY29weXJpZ2h0ICc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3snOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICcgICAgcGFkZGluZy1ib3R0b206IDZweDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICd9JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnLnVpLXRhYnMtbmF2JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAneyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ2Rpc3BsYXk6IG5vbmU7JzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAnfSc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJ3VsLnVpLXRhYnMtbmF2PmxpI0luZGl2aWR1YWxSYXRlcnNMaXN0IGEsIHVsLnVpLXRhYnMtbmF2PmxpI0dyb3VwUmF0ZXJzTGlzdCBhJzsNCiAgICBzZXNzaW9uLnBvcnRhbC5jc3MgPSBzZXNzaW9uLnBvcnRhbC5jc3MgKyAneyc7DQogICAgc2Vzc2lvbi5wb3J0YWwuY3NzID0gc2Vzc2lvbi5wb3J0YWwuY3NzICsgJyAgICBmb250LXNpemU6IC44ZW0gIWltcG9ydGFudDsnOw0KICAgIHNlc3Npb24ucG9ydGFsLmNzcyA9IHNlc3Npb24ucG9ydGFsLmNzcyArICd9JzsNCiAgICBzZXNzaW9uLnJlbGF0aW9uc2hpcFN1bW1hcnkgPSBuZXcgT2JqZWN0KCk7DQogICAgc2Vzc2lvbi5yZWxhdGlvbnNoaXBTdW1tYXJ5LnNvcnRMaXN0ID0gW1swLDBdXTsNCiAgICBzZXNzaW9uLnJlbGF0aW9uc2hpcFN1bW1hcnkuZGVsZXRlUHJvbXB0ID0gIkFyZSB5b3Ugc3VyZSB5b3Ugd2FudCB0byBjb21wbGV0ZWx5IHJlbW92ZSByZWxhdGlvbnNoaXAgJ3swfSc/Ig0KICAgIHNlc3Npb24ucmVsYXRpb25zaGlwU3VtbWFyeS5waW5nVGltZXJJRCA9IG51bGw7DQogICAgc2Vzc2lvbi5yZWxhdGlvbnNoaXBTdW1tYXJ5LnBpbmdUaW1lb3V0ID0gNTAwMDsNCiAgICBzZXNzaW9uLnJlbGF0aW9uc2hpcFN1bW1hcnkucGluZ1BvbGxpbmdJbnRlcnZhbCA9IDUwMDA7DQogICAgc2Vzc2lvbi5yZWxhdGlvbnNoaXBTdW1tYXJ5LnBvbGxpbmdUaW1lcklEID0gbnVsbDsNCiAgICBzZXNzaW9uLnJlbGF0aW9uc2hpcFN1bW1hcnkucG9sbGluZ0ludGVydmFsID0gMzAwMDA7DQogICAgc2Vzc2lvbi5yZWxhdGlvbnNoaXBTdW1tYXJ5LnBvbGxpbmdUaW1lb3V0ID0gMjAwMDAwOw0KICAgIHNlc3Npb24ucmVsYXRpb25zaGlwU3VtbWFyeS5hZ2VUaW1lcklEID0gbnVsbDsNCiAgICBzZXNzaW9uLnJlbGF0aW9uc2hpcFN1bW1hcnkuYWdlVXBkYXRlSW50ZXJ2YWwgPSAxMDAwOw0KICAgIHNlc3Npb24ucmVsYXRpb25zaGlwU3VtbWFyeS5kYXRhTGFzdENoZWNrZWRPbiA9IG51bGw7DQogICAgc2Vzc2lvbi5yZWxhdGlvbnNoaXBTdW1tYXJ5LmRhdGFMYXN0VXBkYXRlZE9uID0gbnVsbDsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeSA9IG5ldyBPYmplY3QoKTsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeS5zb3J0TGlzdCA9IFtbMCwwXV07DQogICAgc2Vzc2lvbi5ldmVudFN1bW1hcnkuZGVsZXRlUHJvbXB0ID0gIkFyZSB5b3Ugc3VyZSB5b3Ugd2FudCB0byBjb21wbGV0ZWx5IHJlbW92ZSBldmVudCAnezB9Jz8iDQogICAgc2Vzc2lvbi5ldmVudFN1bW1hcnkucGluZ1RpbWVySUQgPSBudWxsOw0KICAgIHNlc3Npb24uZXZlbnRTdW1tYXJ5LnBpbmdUaW1lb3V0ID0gNTAwMDsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeS5waW5nUG9sbGluZ0ludGVydmFsID0gNTAwMDsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeS5wb2xsaW5nVGltZXJJRCA9IG51bGw7DQogICAgc2Vzc2lvbi5ldmVudFN1bW1hcnkucG9sbGluZ0ludGVydmFsID0gMzAwMDA7DQogICAgc2Vzc2lvbi5ldmVudFN1bW1hcnkucG9sbGluZ1RpbWVvdXQgPSAyMDAwMDsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeS5hZ2VUaW1lcklEID0gbnVsbDsNCiAgICBzZXNzaW9uLmV2ZW50U3VtbWFyeS5hZ2VVcGRhdGVJbnRlcnZhbCA9IDEwMDA7DQogICAgc2Vzc2lvbi5ldmVudFN1bW1hcnkuZGF0YUxhc3RDaGVja2VkT24gPSBudWxsOw0KICAgIHNlc3Npb24uZXZlbnRTdW1tYXJ5LmRhdGFMYXN0VXBkYXRlZE9uID0gbnVsbDsNCiAgICBzZXNzaW9uLnBhcnRpY2lwYW50U3VtbWFyeSA9IG5ldyBPYmplY3QoKTsNCiAgICBzZXNzaW9uLnBhcnRpY2lwYW50U3VtbWFyeS5zb3J0TGlzdCA9IFtbMCwwXV07DQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkuZGVsZXRlUHJvbXB0ID0gIkFyZSB5b3Ugc3VyZSB5b3Ugd2FudCB0byBjb21wbGV0ZWx5IHJlbW92ZSBwYXJ0aWNpcGFudCAnezB9Jz8iDQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkud2FybmluZ0V2ZW50SXNPcGVuID0gIkNsaWNraW5nIHRoZSAnU2F2ZScgYnV0dG9uIHdpbGwgY2F1c2UgdGhlIHBhcnRpY2lwYW50IHRvIGJlIGFkZGVkIHdpdGggYW4gJ09wZW5lZCcgc3RhdHVzLlxuXG5Ob3RlOiBTY2hlZHVsZWQgZW1haWxzIGFuZCBhY3Rpdml0aWVzIHRoYXQgaGF2ZSBhbHJlYWR5IG9jY3VycmVkIGFyZSBub3QgcmV0cm9hY3RpdmVseSBwcm9jZXNzZWQgZm9yIHRoaXMgcGFydGljaXBhbnQuIg0KICAgIHNlc3Npb24ucGFydGljaXBhbnRTdW1tYXJ5Lm1vdmVQcm9tcHQgPSAiTW92ZSBwYXJ0aWNpcGFudCAnezB9JyB0byAiDQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkuZnJhbWVUaXRsZSA9ICJQYXJ0aWNpcGFudCBTdW1tYXJ5PGJyLz5mb3IgRXZlbnQgJ3swfSciDQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkucG9sbGluZ1RpbWVySUQgPSBudWxsOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRTdW1tYXJ5LnBvbGxpbmdJbnRlcnZhbCA9IDMwMDAwOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRTdW1tYXJ5LnBvbGxpbmdUaW1lb3V0ID0gMjAwMDA7DQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkuYWdlVGltZXJJRCA9IG51bGw7DQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudFN1bW1hcnkuYWdlVXBkYXRlSW50ZXJ2YWwgPSAxMDAwOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRTdW1tYXJ5LmRhdGFMYXN0Q2hlY2tlZE9uID0gbnVsbDsNCiAgICBzZXNzaW9uLnBhcnRpY2lwYW50U3VtbWFyeS5kYXRhTGFzdFVwZGF0ZWRPbiA9IG51bGw7DQogICAgc2Vzc2lvbi5yYXRlclN1bW1hcnkgPSBuZXcgT2JqZWN0KCk7DQogICAgc2Vzc2lvbi5yYXRlclN1bW1hcnkuc29ydExpc3QgPSBbWzAsMF1dOw0KICAgIHNlc3Npb24ucmF0ZXJTdW1tYXJ5LmRlbGV0ZVByb21wdCA9ICJBcmUgeW91IHN1cmUgeW91IHdhbnQgdG8gY29tcGxldGVseSByZW1vdmUgcmF0ZXIgJ3swfSc/Ig0KICAgIHNlc3Npb24ucmF0ZXJTdW1tYXJ5Lndhcm5pbmdFdmVudElzT3BlbiA9ICJDbGlja2luZyB0aGUgJ1NhdmUnIGJ1dHRvbiB3aWxsIGNhdXNlIHRoZSByYXRlciB0byBiZSBhZGRlZCB3aXRoIGFuICdPcGVuZWQnIHN0YXR1cy5cblxuTm90ZTogU2NoZWR1bGVkIGVtYWlscyBhbmQgYWN0aXZpdGllcyB0aGF0IGhhdmUgYWxyZWFkeSBvY2N1cnJlZCBhcmUgbm90IHJldHJvYWN0aXZlbHkgcHJvY2Vzc2VkIGZvciB0aGlzIHJhdGVyLiINCiAgICBzZXNzaW9uLnJhdGVyU3VtbWFyeS5mcmFtZVRpdGxlID0gIlJhdGVyIFN1bW1hcnk8YnIvPmZvciBQYXJ0aWNpcGFudCAnezB9Jzxici8+aW4gRXZlbnQgJ3sxfSciDQogICAgc2Vzc2lvbi5yYXRlclN1bW1hcnkucG9sbGluZ1RpbWVySUQgPSBudWxsOw0KICAgIHNlc3Npb24ucmF0ZXJTdW1tYXJ5LnBvbGxpbmdJbnRlcnZhbCA9IDMwMDAwOw0KICAgIHNlc3Npb24ucmF0ZXJTdW1tYXJ5LnBvbGxpbmdUaW1lb3V0ID0gMjAwMDA7DQogICAgc2Vzc2lvbi5yYXRlclN1bW1hcnkuYWdlVGltZXJJRCA9IG51bGw7DQogICAgc2Vzc2lvbi5yYXRlclN1bW1hcnkuYWdlVXBkYXRlSW50ZXJ2YWwgPSAxMDAwOw0KICAgIHNlc3Npb24ucmF0ZXJTdW1tYXJ5LmRhdGFMYXN0Q2hlY2tlZE9uID0gbnVsbDsNCiAgICBzZXNzaW9uLnJhdGVyU3VtbWFyeS5kYXRhTGFzdFVwZGF0ZWRPbiA9IG51bGw7DQogICAgc2Vzc2lvbi5yYXRlclJlc3BvbnNpYmlsaXRpZXMgPSBuZXcgT2JqZWN0KCk7DQogICAgc2Vzc2lvbi5yYXRlclJlc3BvbnNpYmlsaXRpZXMuc29ydExpc3QgPSBbWzAsMF1dOw0KICAgIHNlc3Npb24ucmF0ZXJSZXNwb25zaWJpbGl0aWVzLmZyYW1lVGl0bGUgPSAiUmVzcG9uc2liaWxpdGllcyBTdW1tYXJ5PGJyLz5mb3IgUmF0ZXIgJ3swfSciDQogICAgc2Vzc2lvbi5yYXRlclJlc3BvbnNpYmlsaXRpZXMucG9sbGluZ1RpbWVySUQgPSBudWxsOw0KICAgIHNlc3Npb24ucmF0ZXJSZXNwb25zaWJpbGl0aWVzLnBvbGxpbmdJbnRlcnZhbCA9IDMwMDAwOw0KICAgIHNlc3Npb24ucmF0ZXJSZXNwb25zaWJpbGl0aWVzLnBvbGxpbmdUaW1lb3V0ID0gMjAwMDA7DQogICAgc2Vzc2lvbi5yYXRlclJlc3BvbnNpYmlsaXRpZXMuYWdlVGltZXJJRCA9IG51bGw7DQogICAgc2Vzc2lvbi5yYXRlclJlc3BvbnNpYmlsaXRpZXMuYWdlVXBkYXRlSW50ZXJ2YWwgPSAxMDAwOw0KICAgIHNlc3Npb24ucmF0ZXJSZXNwb25zaWJpbGl0aWVzLmRhdGFMYXN0Q2hlY2tlZE9uID0gbnVsbDsNCiAgICBzZXNzaW9uLnJhdGVyUmVzcG9uc2liaWxpdGllcy5kYXRhTGFzdFVwZGF0ZWRPbiA9IG51bGw7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQgPSBuZXcgT2JqZWN0KCk7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuZnJhbWVUaXRsZSA9ICJFdmVudCBQcm9wZXJ0aWVzPGJyLz5mb3IgJ3swfSciOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsTWFuYWdlclJlcG9ydHNOb3dQcm9tcHQgPSAiRW1haWwgbWFuYWdlciBhbGwgcmVwb3J0cyBub3ciOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsTWFuYWdlclJlcG9ydHNXaGVuUmVhZHlQcm9tcHQgPSAiRW1haWwgbWFuYWdlcnMgYWxsIHJlcG9ydHMgcGVyICdSZXBvcnRzIFJlYWR5IEZvcicgc2NoZWR1bGUiOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsQ29uc3VsdGFudFJlcG9ydHNOb3dQcm9tcHQgPSAiRW1haWwgY29uc3VsdGFudCBhbGwgcmVwb3J0cyBub3ciOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsQ29uc3VsdGFudFJlcG9ydHNXaGVuUmVhZHlQcm9tcHQgPSAiRW1haWwgY29uc3VsdGFudCBhbGwgcmVwb3J0cyBwZXIgJ1JlcG9ydHMgUmVhZHkgRm9yJyBzY2hlZHVsZSI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuZW1haWxDbGllbnRDb250YWN0UmVwb3J0c05vd1Byb21wdCA9ICJFbWFpbCBjbGllbnQgY29udGFjdCBhbGwgcmVwb3J0cyBub3ciOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsQ2xpZW50Q29udGFjdFJlcG9ydHNXaGVuUmVhZHlQcm9tcHQgPSAiRW1haWwgY2xpZW50IGNvbnRhY3QgYWxsIHJlcG9ydHMgcGVyICdSZXBvcnRzIFJlYWR5IEZvcicgc2NoZWR1bGUiOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmVtYWlsUmVwb3J0Q29udGFjdFJlcG9ydHNOb3dQcm9tcHQgPSAiRW1haWwgcmVwb3J0IGNvbnRhY3QgYWxsIHJlcG9ydHMgbm93IjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5lbWFpbFJlcG9ydENvbnRhY3RSZXBvcnRzV2hlblJlYWR5UHJvbXB0ID0gIkVtYWlsIHJlcG9ydCBjb250YWN0IGFsbCByZXBvcnRzIHBlciAnUmVwb3J0cyBSZWFkeSBGb3InIHNjaGVkdWxlIjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5lbWFpbFBhcnRpY2lwYW50c1JlcG9ydE5vd1Byb21wdCA9ICJFbWFpbCBhbGwgcGFydGljaXBhbnRzIHRoZWlyIHJlcG9ydHMgbm93IjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5lbWFpbFBhcnRpY2lwYW50c1JlcG9ydFdoZW5SZWFkeVByb21wdCA9ICJFbWFpbCBhbGwgcGFydGljaXBhbnRzIHRoZWlyIHJlcG9ydHMgcGVyICdSZXBvcnRzIFJlYWR5IEZvcicgc2NoZWR1bGUiOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmNvbXBhcmlzb25Hcm91cDFQcm9tcHQgPSAiU2hvdyBncm91cCBjb21wYXJpc29uIjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5jb21wYXJpc29uR3JvdXAyUHJvbXB0ID0gIlNob3cgb3JnYW5pemF0aW9uIGNvbXBhcmlzb24iOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmNvbXBhcmlzb25Hcm91cDNQcm9tcHQgPSAiU2hvdyBiZW5jaG1hcmsgY29tcGFyaXNvbiI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuY29tcGFyaXNvbkdyb3VwMldhdmVPcHRpb25Qcm9tcHQgPSAiQ29tcHV0ZSBzY29yZXMgYmFzZWQgb24gV2F2ZSI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuY29tcGFyaXNvbkdyb3VwMldhdmVWZXJzaW9uT3B0aW9uUHJvbXB0ID0gIkNvbXB1dGUgc2NvcmVzIGJhc2VkIG9uIFdhdmUgYW5kIFZlcnNpb24iOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50Lm9wZW5FbmRlZE9wdGlvbjFQcm9tcHQgPSAiU2hvdyBvcGVuIGVuZGVkIGZlZWRiYWNrIGJ5IHJhdGluZyBjYXRlZ29yeSI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQub3BlbkVuZGVkT3B0aW9uMlByb21wdCA9ICJTaG93IG9wZW4gZW5kZWQgZmVlZGJhY2sgYnkgbWFuYWdlciBhbmQgYWxsIG90aGVycyI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQub3BlbkVuZGVkT3B0aW9uM1Byb21wdCA9ICJTaG93IG9wZW4gZW5kZWQgZmVlZGJhY2sgdW5jYXRlZ29yaXplZCI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuc2hvd092ZXJhbGxSZWxhdGlvbnNoaXBQcm9tcHQgPSAiQWRkIGFuIE92ZXJhbGwgUmF0aW5nIENhdGVnb3J5IjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5hdXRvQ29tcGxldGlvblNjb3BlID0gbmV3IEFycmF5KCk7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuYXV0b0NvbXBsZXRpb25TY29wZVswXSA9ICJBbGwgS25vd24gUGVyc29ucyI7DQogICAgc2Vzc2lvbi5ldmVudE1hbmFnZW1lbnQuYXV0b0NvbXBsZXRpb25TY29wZVsxXSA9ICJQZXJzb25zIEFzc29jaWF0ZWQgd2l0aCB0aGlzIFdhdmUiOw0KICAgIHNlc3Npb24uZXZlbnRNYW5hZ2VtZW50LmF1dG9Db21wbGV0aW9uU2NvcGVbMl0gPSAiUGVyc29ucyBBc3NvY2lhdGVkIHdpdGggdGhpcyBXYXZlIGFuZCBWZXJzaW9uIjsNCiAgICBzZXNzaW9uLmV2ZW50TWFuYWdlbWVudC5hdXRvQ29tcGxldGlvblNjb3BlWzNdID0gIlBlcnNvbnMgQXNzb2NpYXRlZCB3aXRoIHRoaXMgRXZlbnQiOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRNYW5hZ2VtZW50ID0gbmV3IE9iamVjdCgpOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRNYW5hZ2VtZW50LmZyYW1lVGl0bGUgPSAiUGFydGljaXBhbnQgUHJvcGVydGllczxici8+Zm9yICd7MH0nIjsNCiAgICBzZXNzaW9uLnBhcnRpY2lwYW50TWFuYWdlbWVudC5lbWFpbFBhcnRpY2lwYW50UmVwb3J0Tm93UHJvbXB0ID0gIkVtYWlsIHBhcnRpY2lwYW50IHRoZWlyIHJlcG9ydCBub3ciOw0KICAgIHNlc3Npb24ucGFydGljaXBhbnRNYW5hZ2VtZW50LmVtYWlsUGFydGljaXBhbnRSZXBvcnRXaGVuUmVhZHlQcm9tcHQgPSAiRW1haWwgcGFydGljaXBhbnQgdGhlaXIgcmVwb3J0IHBlciAnUmVwb3J0cyBSZWFkeSBGb3InIHNjaGVkdWxlIjsNCiAgICBzZXNzaW9uLnBhcnRpY2lwYW50TWFuYWdlbWVudC5nZW5lcmF0ZVByZWxpbWluYXJ5UmVwb3J0V2l0aENsb3NlUHJvbXB0ID0gIkNsb3NlIHBhcnRpY2lwYW50IGZyb20gYWRkaXRpb25hbCByYXRpbmdzIGFuZCBnZW5lcmF0ZSBwcmVsaW1pbmFyeSByZXBvcnQiDQogICAgc2Vzc2lvbi5wYXJ0aWNpcGFudE1hbmFnZW1lbnQuZ2VuZXJhdGVQcmVsaW1pbmFyeVJlcG9ydFdpdGhvdXRDbG9zZVByb21wdCA9ICJHZW5lcmF0ZSBwcmVsaW1pbmFyeSByZXBvcnQiDQogICAgc2Vzc2lvbi5yYXRlck1hbmFnZW1lbnQgPSBuZXcgT2JqZWN0KCk7DQogICAgc2Vzc2lvbi5yYXRlck1hbmFnZW1lbnQuZnJhbWVUaXRsZSA9ICJSYXRlciBQcm9wZXJ0aWVzPGJyLz5mb3IgJ3swfSciDQogICAgc2Vzc2lvbi5lcnJvck1lc3NhZ2VzID0gbmV3IE9iamVjdCgpOw0KICAgIHNlc3Npb24uZXJyb3JNZXNzYWdlcy5iYWRTeW50YXggPSAnQmFkIEVtYWlsIEFkZHJlc3MnOw0KICAgIHNlc3Npb24uZXJyb3JNZXNzYWdlcy5iYWREb21haW4gPSAnQmFkIERvbWFpbicNCiAgICBzZXNzaW9uLmVycm9yTWVzc2FnZXMudW5zdXBwb3J0ZWREb21haW4gPSAnRG9tYWluIE5vdCBTdXBwb3J0ZWQnDQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXMgPSBuZXcgQXJyYXkoKTsNCiAgICB2YXIgaSA9IDA7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICIxMjowMCBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI2OjAwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjY6MTUgQU0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNjozMCBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI2OjQ1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjc6MDAgQU0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNzoxNSBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI3OjMwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjc6NDUgQU0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiODowMCBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI4OjE1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjg6MzAgQU0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiODo0NSBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI5OjAwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjk6MTUgQU0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiOTozMCBBTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI5OjQ1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjAwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjE1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjMwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjQ1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjAwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjE1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjMwIEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjQ1IEFNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEyOjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEyOjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEyOjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEyOjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjE6MDAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiMToxNSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICIxOjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjE6NDUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiMjowMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICIyOjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjI6MzAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiMjo0NSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICIzOjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjM6MTUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiMzozMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICIzOjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjQ6MDAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNDoxNSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI0OjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjQ6NDUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNTowMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI1OjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjU6MzAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNTo0NSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI2OjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjY6MTUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNjozMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI2OjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjc6MDAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiNzoxNSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI3OjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjc6NDUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiODowMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI4OjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjg6MzAgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiODo0NSBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI5OjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjk6MTUgUE0iOw0KICAgIHNlc3Npb24uc2VsZWN0YWJsZVRpbWVzW2krK10gPSAiOTozMCBQTSI7DQogICAgc2Vzc2lvbi5zZWxlY3RhYmxlVGltZXNbaSsrXSA9ICI5OjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjEwOjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjAwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjE1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjMwIFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjQ1IFBNIjsNCiAgICBzZXNzaW9uLnNlbGVjdGFibGVUaW1lc1tpKytdID0gIjExOjU5IFBNIjsNCiAgICBzZXNzaW9uLmRheU9mV2VlayA9IG5ldyBBcnJheSgpOw0KICAgIHNlc3Npb24uZGF5T2ZXZWVrWzBdID0gIlN1biI7DQogICAgc2Vzc2lvbi5kYXlPZldlZWtbMV0gPSAiTW9uIjsNCiAgICBzZXNzaW9uLmRheU9mV2Vla1syXSA9ICJUdWUiOw0KICAgIHNlc3Npb24uZGF5T2ZXZWVrWzNdID0gIldlZCI7DQogICAgc2Vzc2lvbi5kYXlPZldlZWtbNF0gPSAiVGh1IjsNCiAgICBzZXNzaW9uLmRheU9mV2Vla1s1XSA9ICJGcmkiOw0KICAgIHNlc3Npb24uZGF5T2ZXZWVrWzZdID0gIlNhdCI7DQoNCiAgICBmdW5jdGlvbiBteVNlc3Npb24oKQ0KICAgIHsNCiAgICAgICAgcmV0dXJuIHNlc3Npb247DQogICAgfQ0KDQogICAgZnVuY3Rpb24gbXlVdGlsKCkNCiAgICB7DQogICAgICAgIHJldHVybiB1dGlsOw0KICAgIH0NCg0KICAgIGZ1bmN0aW9uIGRhdGFDaGFuZ2VkKCkNCiAgICB7DQogICAgICAgIGZvciAodmFyIGkgaW4gZGF0YSkNCiAgICAgICAgew0KICAgICAgICAgICAgaWYgKHRoaXMuaWQgPT0gZGF0YVtpXS5pZCkNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICBpZiAoZGF0YVtpXS5jdXJyZW50VmFsdWUgIT0gZGF0YVtpXS5pbml0aWFsVmFsdWUpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICAkKCcjJyArIGRhdGFbaV0uaWQpLnJlbW92ZUNsYXNzKCdjaGFuZ2VkJyk7DQogICAgICAgICAgICAgICAgICAgIG15U2Vzc2lvbigpLmNoYW5nZWRDb3VudGVyLS07DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIHNldEN1cnJlbnRWYWx1ZShkYXRhW2ldKTsNCiAgICAgICAgICAgICAgICBpZiAoZGF0YVtpXS5jdXJyZW50VmFsdWUgIT0gZGF0YVtpXS5pbml0aWFsVmFsdWUpDQogICAgICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgICAgICAkKCcjJyArIGRhdGFbaV0uaWQpLmFkZENsYXNzKCdjaGFuZ2VkJyk7DQogICAgICAgICAgICAgICAgICAgIG15U2Vzc2lvbigpLmNoYW5nZWRDb3VudGVyKys7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIGJyZWFrOw0KICAgICAgICAgICAgfQ0KICAgICAgICB9DQogICAgICAgIGlmIChteVNlc3Npb24oKS5jaGFuZ2VkQ291bnRlciA+IDApDQogICAgICAgIHsNCiAgICAgICAgICAgICQoJy5jb250ZXh0dWFsQnV0dG9uJykuYXR0cigiZGlzYWJsZWQiLCBmYWxzZSk7DQogICAgICAgIH0NCiAgICAgICAgZWxzZQ0KICAgICAgICB7DQogICAgICAgICAgICAkKCcuY29udGV4dHVhbEJ1dHRvbicpLmF0dHIoImRpc2FibGVkIiwgdHJ1ZSk7DQogICAgICAgIH0NCiAgICB9DQogICAgZnVuY3Rpb24gZGF0ZVRpbWVEYXRhQ2hhbmdlZCgpDQogICAgew0KICAgICAgICBmb3IgKHZhciBpIGluIGRhdGEpDQogICAgICAgIHsNCiAgICAgICAgICAgIGlmICh0aGlzLmlkID09IGRhdGFbaV0uZGF0ZUlkIHx8IHRoaXMuaWQgPT0gZGF0YVtpXS50aW1lSWQpDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgaWYgKGRhdGFbaV0uY3VycmVudFZhbHVlICE9IGRhdGFbaV0uaW5pdGlhbFZhbHVlKQ0KICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLmRhdGVJZCkucmVtb3ZlQ2xhc3MoJ2NoYW5nZWQnKTsNCiAgICAgICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLnRpbWVJZCkucmVtb3ZlQ2xhc3MoJ2NoYW5nZWQnKTsNCiAgICAgICAgICAgICAgICAgICAgbXlTZXNzaW9uKCkuY2hhbmdlZENvdW50ZXItLTsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgaWYgKCQoJyMnICsgZGF0YVtpXS5kYXRlSWQpLnZhbCgpID09ICcnKQ0KICAgICAgICAgICAgICAgICAgICBkYXRhW2ldLmN1cnJlbnRWYWx1ZSA9IG51bGw7DQogICAgICAgICAgICAgICAgZWxzZSBpZiAoJCgnIycgKyBkYXRhW2ldLnRpbWVJZCkudmFsKCkgPT0gJycpDQogICAgICAgICAgICAgICAgICAgIGRhdGFbaV0uY3VycmVudFZhbHVlID0gJCgnIycgKyBkYXRhW2ldLmRhdGVJZCkudmFsKCk7DQogICAgICAgICAgICAgICAgZWxzZQ0KICAgICAgICAgICAgICAgICAgICBkYXRhW2ldLmN1cnJlbnRWYWx1ZSA9ICQoJyMnICsgZGF0YVtpXS5kYXRlSWQpLnZhbCgpICsgJyAnICsgJCgnIycgKyBkYXRhW2ldLnRpbWVJZCkudmFsKCk7DQogICAgICAgICAgICAgICAgaWYgKGRhdGFbaV0uY3VycmVudFZhbHVlICE9IGRhdGFbaV0uaW5pdGlhbFZhbHVlKQ0KICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLmRhdGVJZCkuYWRkQ2xhc3MoJ2NoYW5nZWQnKTsNCiAgICAgICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLnRpbWVJZCkuYWRkQ2xhc3MoJ2NoYW5nZWQnKTsNCiAgICAgICAgICAgICAgICAgICAgbXlTZXNzaW9uKCkuY2hhbmdlZENvdW50ZXIrKzsNCiAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgaWYgKCQoJyMnICsgZGF0YVtpXS5kYXRlSWQpLnZhbCgpICE9ICcnKQ0KICAgICAgICAgICAgICAgICAgICAkKCcjJyArIGRhdGFbaV0udGltZUlkKS5yZW1vdmVDbGFzcygnaGlkZGVuJyk7DQogICAgICAgICAgICAgICAgZWxzZQ0KICAgICAgICAgICAgICAgICAgICAkKCcjJyArIGRhdGFbaV0udGltZUlkKS5hZGRDbGFzcygnaGlkZGVuJyk7DQogICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLmRheUlkKS5odG1sKGdldERheU9mV2VlaygkKCcjJyArIGRhdGFbaV0uZGF0ZUlkKS52YWwoKSkpOw0KICAgICAgICAgICAgICAgIGJyZWFrOw0KICAgICAgICAgICAgfQ0KICAgICAgICB9DQogICAgICAgIGlmIChteVNlc3Npb24oKS5jaGFuZ2VkQ291bnRlciA+IDApDQogICAgICAgIHsNCiAgICAgICAgICAgICQoJy5jb250ZXh0dWFsQnV0dG9uJykuYXR0cigiZGlzYWJsZWQiLCBmYWxzZSk7DQogICAgICAgIH0NCiAgICAgICAgZWxzZQ0KICAgICAgICB7DQogICAgICAgICAgICAkKCcuY29udGV4dHVhbEJ1dHRvbicpLmF0dHIoImRpc2FibGVkIiwgdHJ1ZSk7DQogICAgICAgIH0NCiAgICAgICAgc2hvd1NjaGVkdWxlKCk7DQogICAgfQ0KICAgIGZ1bmN0aW9uIGlkVmVyc2lvbkRhdGFDaGFuZ2VkKCkNCiAgICB7DQogICAgICAgIGZvciAodmFyIGkgaW4gZGF0YSkNCiAgICAgICAgew0KICAgICAgICAgICAgaWYgKHRoaXMuaWQgPT0gZGF0YVtpXS5pZElkIHx8IHRoaXMuaWQgPT0gZGF0YVtpXS52ZXJzaW9uSWQpDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgaWYgKGRhdGFbaV0uY3VycmVudFZhbHVlICE9IGRhdGFbaV0uaW5pdGlhbFZhbHVlKQ0KICAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICAgJCgnIycgKyBkYXRhW2ldLmlkSWQpLnJlbW92ZUNsYXNzKCdjaGFuZ2VkJyk7DQogICAgICAgICAgICAgICAgICAgICQoJyMnICsgZGF0YVtpXS52ZXJzaW9uSWQpLnJlbW92ZUNsYXNzKCdjaGFuZ2VkJyk7DQogICAgICAgICAgICAgICAgICAgIG15U2Vzc2lvbigpLmNoYW5nZWRDb3VudGVyLS07DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIGlmICgkKCcjJyArIGRhdGFbaV0uaWRJZCkudmFsKCkgPT0gJycpDQogICAgICAgICAgICAgICAgICAgIGRhdGFbaV0uY3VycmVudFZhbHVlID0gbnVsbDsNCiAgICAgICAgICAgICAgICBlbHNlIGlmICgkKCcjJyArIGRhdGFbaV0udmVyc2lvbklkKS52YWwoKSA9PSAnJykNCiAgICAgICAgICAgICAgICAgICAgZGF0YVtpXS5jdXJyZW50VmFsdWUgPSAkKCcjJyArIGRhdGFbaV0uaWRJZCkudmFsKCk7DQogICAgICAgICAgICAgICAgZWxzZQ0KICAgICAgICAgICAgICAgICAgICBkYXRhW2ldLmN1cnJlbnRWYWx1ZSA9ICQoJyMnICsgZGF0YVtpXS5pZElkKS52YWwoKSArICcuJyArICQoJyMnICsgZGF0YVtpXS52ZXJzaW9uSWQpLnZhbCgpOw0KICAgICAgICAgICAgICAgIGlmIChkYXRhW2ldLmN1cnJlbnRWYWx1ZSAhPSBkYXRhW2ldLmluaXRpYWxWYWx1ZSkNCiAgICAgICAgICAgICAgICB7DQogICAgICAgICAgICAgICAgICAgICQoJyMnICsgZGF0YVtpXS5pZElkKS5hZGRDbGFzcygnY2hhbmdlZCcpOw0KICAgICAgICAgICAgICAgICAgICAkKCcjJyArIGRhdGFbaV0udmVyc2lvbklkKS5hZGRDbGFzcygnY2hhbmdlZCcpOw0KICAgICAgICAgICAgICAgICAgICBteVNlc3Npb24oKS5jaGFuZ2VkQ291bnRlcisrOw0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICBicmVhazsNCiAgICAgICAgICAgIH0NCiAgICAgICAgfQ0KICAgICAgICBpZiAobXlTZXNzaW9uKCkuY2hhbmdlZENvdW50ZXIgPiAwKQ0KICAgICAgICB7DQogICAgICAgICAgICAkKCcuY29udGV4dHVhbEJ1dHRvbicpLmF0dHIoImRpc2FibGVkIiwgZmFsc2UpOw0KICAgICAgICB9DQogICAgICAgIGVsc2UNCiAgICAgICAgew0KICAgICAgICAgICAgJCgnLmNvbnRleHR1YWxCdXR0b24nKS5hdHRyKCJkaXNhYmxlZCIsIHRydWUpOw0KICAgICAgICB9DQogICAgfQ0KICAgIGZ1bmN0aW9uIGdldERheU9mV2VlayhteURhdGUpDQogICAgew0KICAgICAgICB2YXIgbXMgPSBEYXRlLnBhcnNlKG15RGF0ZSk7DQogICAgICAgIGlmIChpc05hTihtcykpIHJldHVybiAnJzsNCiAgICAgICAgcmV0dXJuIG15U2Vzc2lvbigpLmRheU9mV2Vla1tuZXcgRGF0ZShtcykuZ2V0RGF5KCldOw0KICAgIH0NCjwvc2NyaXB0PmRkuMzbOqnDtySF5ISEsCCgQqGhMpT+aaQMhVf373Dj2Vo=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/portal/WebResource.axd?d=ZMaO1XiK5LnC1qfhLJxGsiS1MnVWFwb64J7XA0eYgn2_DGWDteRMW2zm5SYlc4Jfq5_zFbJTyulupqefYvUQdbPVKbNFnD5C9w58RZgF45A1&amp;t=638901536248157332" type="text/javascript"></script>
+
+
+<script src="/portal/ScriptResource.axd?d=54o-q7oBS8cVcw-9gEkGhDXUHpCZIi8vtB2RHeYfnMRiU8VwY8XKpEkJEC3i0D4PMSE_S2ajUevqRD82CaQ8FJSfuvQ9bdzpdVVRUUP6OF6pYONW7YRUVVlZKu3fOQBaXqWk-dV4Ufch8kz63RvmheUU5xnEpMUPN-0mGmlQdk81&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/portal/ScriptResource.axd?d=kW4adbtNiyiQ9R3L2_khnwDalf4PgtJhGkSn7J9__JxjW-jlz7yoNjLV9b4eGEicZVcFh1gRaW1z1DsSGTqfEsAoLKjnRYm_s0-itmjBIS56a4xi7BEE_gA-dc2dqGnZjUp5u3H9yL3h2KD8N6wGUtlIiqPNIREH_pUL2oU8ATGLwkdtELqnOw9V-2tj45mf0&amp;t=5c0e0825" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var PageMethods = function() {
+PageMethods.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+PageMethods.prototype = {
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return PageMethods._staticInstance.get_path();},
+SaveResults:function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,name,email,coachOptIn,emotionsOptIn,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveResults',false,{eid:eid,projectId:projectId,eventId:eventId,assessmentSetId:assessmentSetId,assessmentId:assessmentId,languageId:languageId,name:name,email:email,coachOptIn:coachOptIn,emotionsOptIn:emotionsOptIn},succeededCallback,failedCallback,userContext); },
+ShareResults:function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,shareToName,shareToEmail,trustedRelationship,message,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ShareResults',false,{eid:eid,projectId:projectId,eventId:eventId,assessmentSetId:assessmentSetId,assessmentId:assessmentId,languageId:languageId,yourName:yourName,yourEmail:yourEmail,shareToName:shareToName,shareToEmail:shareToEmail,trustedRelationship:trustedRelationship,message:message},succeededCallback,failedCallback,userContext); },
+ContactUs:function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,subject,message,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ContactUs',false,{eid:eid,projectId:projectId,eventId:eventId,assessmentSetId:assessmentSetId,assessmentId:assessmentId,languageId:languageId,yourName:yourName,yourEmail:yourEmail,subject:subject,message:message},succeededCallback,failedCallback,userContext); }}
+PageMethods.registerClass('PageMethods',Sys.Net.WebServiceProxy);
+PageMethods._staticInstance = new PageMethods();
+PageMethods.set_path = function(value) { PageMethods._staticInstance.set_path(value); }
+PageMethods.get_path = function() { return PageMethods._staticInstance.get_path(); }
+PageMethods.set_timeout = function(value) { PageMethods._staticInstance.set_timeout(value); }
+PageMethods.get_timeout = function() { return PageMethods._staticInstance.get_timeout(); }
+PageMethods.set_defaultUserContext = function(value) { PageMethods._staticInstance.set_defaultUserContext(value); }
+PageMethods.get_defaultUserContext = function() { return PageMethods._staticInstance.get_defaultUserContext(); }
+PageMethods.set_defaultSucceededCallback = function(value) { PageMethods._staticInstance.set_defaultSucceededCallback(value); }
+PageMethods.get_defaultSucceededCallback = function() { return PageMethods._staticInstance.get_defaultSucceededCallback(); }
+PageMethods.set_defaultFailedCallback = function(value) { PageMethods._staticInstance.set_defaultFailedCallback(value); }
+PageMethods.get_defaultFailedCallback = function() { return PageMethods._staticInstance.get_defaultFailedCallback(); }
+PageMethods.set_enableJsonp = function(value) { PageMethods._staticInstance.set_enableJsonp(value); }
+PageMethods.get_enableJsonp = function() { return PageMethods._staticInstance.get_enableJsonp(); }
+PageMethods.set_jsonpCallbackParameter = function(value) { PageMethods._staticInstance.set_jsonpCallbackParameter(value); }
+PageMethods.get_jsonpCallbackParameter = function() { return PageMethods._staticInstance.get_jsonpCallbackParameter(); }
+PageMethods.set_path("myagilebrainresultsabp.aspx");
+PageMethods.SaveResults= function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,name,email,coachOptIn,emotionsOptIn,onSuccess,onFailed,userContext) {PageMethods._staticInstance.SaveResults(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,name,email,coachOptIn,emotionsOptIn,onSuccess,onFailed,userContext); }
+PageMethods.ShareResults= function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,shareToName,shareToEmail,trustedRelationship,message,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ShareResults(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,shareToName,shareToEmail,trustedRelationship,message,onSuccess,onFailed,userContext); }
+PageMethods.ContactUs= function(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,subject,message,onSuccess,onFailed,userContext) {PageMethods._staticInstance.ContactUs(eid,projectId,eventId,assessmentSetId,assessmentId,languageId,yourName,yourEmail,subject,message,onSuccess,onFailed,userContext); }
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DE2EA27A" />
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+        <div id="top2" class="container" style="display:none;">
+            <section id="intro2">
+            </section>
+        </div>
+        <div id="top" class="container" style="display:none;">
+            <div id="divAdPanelSection" class="div-section excludeFromPrinting">
+                <div id="adPanelSection"><div class='row center'>
+<div class='col-12 description'><a target="_blank" href="https://agilebrain.com/lp/abfreecoach-banner"><img src="https://content.leadingindicator.com/Images/AB_AdPanel.png" alt="Are you a professional coach? Learn how AgileBrain can help you build better coaching plans." width="99%"></a><br><br></div>
+</div></div>
+            </div>
+            <ul class="nav nav-pills excludeFromPrinting">
+                <li id="resultsTab" class="active"><a href="#results" data-toggle="tab" onclick="setTimeout(function() { start(5) },1000);">Results</a></li>
+                <li id="interpretationTab"><a href="#interpretation" data-toggle="tab">Interpretation</a></li>
+                <li id="faqTab"><a href="#faqDialog" data-toggle="tab">FAQs</a></li>
+                
+                <li id="contactUsTab"><a href="#contactUsDialog" data-toggle="tab">Help</a></li>
+            </ul>
+            <hr class="hr-separator excludeFromPrinting" />
+            <div class="tab-content">
+                <div id="results" style="width: 100%;" onclick="start(5)" class="tab-pane active excludeFromLandscapePrinting">
+                    <section id="intro">
+                        <div id="spinner" style="text-align: center; display: block; margin-top: 72px;">
+                            <i class="fa fa-spinner fa-spin" style="font-size: 50px"></i>
+                        </div>
+                    </section>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                        <div class="modal-dialog custom-centered" role="document">
+                            <div class="modal-content">
+                                  <div class="d-flex modal-close">
+                                             <div class="ml-auto">
+                                              <button type="button" class="btn close-btn btn-lg" data-dismiss="modal"> <span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                </div>  
+                               <div class="modal-body">
+                                   <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitle">Modal Title</h5>
+                                   </div>
+                                      <div id="imageWrapper" class="imageWrapper"> </div>
+                                     
+                                    <div id="modalPiePositive" class="modal-feedback"></div> 
+                                    <div id="modalPieNegative" class="modal-feedback"></div>
+                                    <div id="modalContent" class="modal-feedback">Content</div>
+                                    <div id="modalDescription" class="modal-feedback">Description</div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <section id="outer-canvas-content" style="width: 100%; text-align: center;">
+                        <section id="canvas-content" style="display: none; width: 100%; max-width: 1200px;">
+                            <canvas id="myCanvas">Your browser does not support the HTML canvas tag.
+                            </canvas>
+                            <h1 id="output"></h1>
+                        </section>
+                    </section>
+                    <section id="feedback" style="display: none; width: 100%;">
+                    </section>
+                </div>
+                <div class="forPrintingLandscape">
+                    Your <i>Agile</i>Brain℠ Profile report is not available in LANDSCAPE. Please select PORTRAIT page orientation.
+               
+                </div>
+                <div id="interpretation" class="tab-pane">
+                    <div id="divInterpretationHeader" class="div-section">
+                        <div id="interpretationHeader"><div class='row center'>
+<div class='col-12 header'>Video: Interpreting Your <i>Agile</i>Brain Results</div>
+</div></div>
+                    </div>
+                    <div id="divInterpretationSection" class="div-section">
+                        <div id="interpretationSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+<div class='feedback'>
+
+<div class='row center'>
+<p>You may want to watch this short (3 minute) video that explains the <i>Agile</i>Brain framework and how to interpret your results.<br><br><br></p>
+
+<p><video id="video1" style="width:560px; max-width:100%; height:auto;" controls>
+  <source src="https://content.leadingindicator.com/StaticContent/AgileBrain(SM)InterpretingResults.mp4#t=1.25" type="video/mp4">
+Your browser does not support the video tag.
+</video></p></div>
+</div>
+
+<div class='row center'>
+<div class='col-12 header'>How Do I Read My Profile?</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>The <i>Agile</i>Brain framework maps human emotion into four life domains – the self, material, social and spiritual domains – and at three levels – from foundational, to experiential, to aspirational - resulting in a total of twelve categories of emotional need. The <i>Agile</i>Brain exercise exposes images for short periods – just enough time to respond emotionally, not rationally. The images represent both the positive (hope) and negative (fear) aspects of these twelve emotional needs categories.</div></div><div class='row'><div class='col-12 description'>Each cell is color-coded to reflect the intensity of your emotional response: darker shades indicate stronger emotional responses, suggesting more unmet need in that area; lighter shades indicate lighter emotional responses, suggesting less unmet need in that area. Another way to think about a light shade is that you are more "settled" in that emotional need category. For your strongest emotional responses, you will also see a color-coded circle showing the relative contributions of positive and negative emotional needs: more blue in the circle indicates that positive needs contributed more than negative ones; more orange in the circle indicates negative needs contributed more than positive ones. Equal blue and orange indicate that your positive and negative needs contributed equally in that need category. A solid circle indicates all your selections were either positive (blue) or negative (orange).</div>
+</div>
+
+<div class='row center'>
+<div class='col-12 header'>Now What?</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>We hope you've found your <i>Agile</i>Brain results helpful in making you more aware of your emotional and motivational needs. You may want to consider these next steps as you continue your journey of self-awareness and growth:</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li><a href='#results' data-toggle='tab' onclick='changeActiveTab("#resultsTab")'>Return to your results</a> to consider what you might take away from them</li>
+<li><a href='#top'>Watch the Interpreting Your Results video</a></li>
+<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab("#shareTab")'>Save your results</a> so you can revisit them again after a few days of reflection</li>
+<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab("#shareTab")'>Share your results</a> with someone you trust</li>
+<li><a href='#contactUsDialog' data-toggle='tab' onclick='changeActiveTab("#contactUsTab")'>Seek help</a> if you feel anxious or desire positive change in your life</li>
+<li>Take <i>Agile</i>Brain again after you've done some work on your journey or when a major life event merits touching base with your emotional / motivational needs</li>
+
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>We're all on a journey; <i>Agile</i>Brain is here to help along the way.</div>
+</div>
+
+<br><hr class="hr-separator excludeFromPrinting" />
+
+<div class='row center'>
+<div class='col-12 description'><a target="_blank" href="https://agilebrain.com/lp/abfreecoach-banner"><img src="https://content.leadingindicator.com/Images/AB_AdPanel.png" alt="Are you a professional coach? Learn how AgileBrain can help you build better coaching plans." width="99%"></a><br><br></div>
+</div>
+
+<div class='row center'>
+<div class='LineCopyright'>Copyright © 2022-2023 Leading Indicator Systems. All rights reserved.
+
+<br>
+
+<a href="JavaScript:newPopup('https://agilebrain.com/privacy-policy');" style="text-decoration:none;");">Privacy Policy</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="JavaScript:newPopup('https://agilebrain.com/terms-of-service');" style="text-decoration:none;");">Terms of Service</a>
+
+</div></div></div>
+                    </div>
+                </div>
+                <div id="faqDialog" class="tab-pane">
+                    <div id="divFaqHeader" class="div-section">
+                        <div id="faqHeader"><div class='row center'>
+<div class='col-12 header'>Frequently Asked Questions</div>
+</div></div>
+                    </div>
+                    <div id="divFaqSection" class="div-section">
+                        <div id="faqSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+<div class='feedback'>
+
+<div class='row center'>
+<div class='col-12 header'>How Can I Find Professional Help</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>If you are experiencing psychological distress, we encourage you to seek professional help. If you are not feeling distress and seek positive change in your life, you may want to consider the help of a coach. We encourage you to explore the resources below:</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li>The U. S. Department of Health & Human Services offers a directory of resources for immediate help in a Mental Health Crisis -- <a href="JavaScript:newPopup('https://www.mentalhealth.gov/get-help/immediate-help')">https://www.mentalhealth.gov/get-help/immediate-help</a></li>
+<li>The American Psychological Association offers a directory of therapists -- <a href="JavaScript:newPopup('https://locator.apa.org/')">https://locator.apa.org/</a></li>
+<li>The International Therapy Directory offers a directory of therapists -- <a href="JavaScript:newPopup('https://internationaltherapistdirectory.com/all-locations/')">https://internationaltherapistdirectory.com/all-locations/</a></li>
+<li>The International Coaching Federation offers a directory of certified coaches -- <a href="JavaScript:newPopup('https://coachingfederation.org/find-a-coach')">https://coachingfederation.org/find-a-coach</a></li>
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'><i>Agile</i>Brain and Leading Indicator Systems make no representations as to the completeness or accuracy of these resources.</div>
+</div>
+
+<div class='row center'>
+<div class='col-12 header'>Now What?</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>We hope you've found your <i>Agile</i>Brain results helpful in making you more aware of your emotional and motivational needs. You may want to consider these next steps as you continue your journey of self-awareness and growth:</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li><a href='#results' data-toggle='tab' onclick='changeActiveTab("#resultsTab")'>Return to your results</a> to consider what you might take away from them</li>
+<li><a href='#interpretation' data-toggle='tab' onclick='changeActiveTab("#interpretationTab")'>Watch the Interpreting Your Results video</a></li>
+<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab("#shareTab")'>Save your results</a> so you can revisit them again after a few days of reflection</li>
+<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab("#shareTab")'>Share your results</a> with someone you trust</li>
+<li><a href='#contactUsDialog' data-toggle='tab' onclick='changeActiveTab("#contactUsTab")'>Seek help</a> if you feel anxious or desire positive change in your life</li>
+<li>Take <i>Agile</i>Brain again after you've done some work on your journey or when a major life event merits touching base with your emotional / motivational needs</li>
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>We're all on a journey; <i>Agile</i>Brain is here to help along the way.</div>
+</div>
+
+<div class='row center'>
+<div class='col-12 header'>Why do the images disappear so quickly?</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>The most common reaction people new to <i>Agile</i>Brain express is a desire for more time to select the images. We know from neuroscience that the brain processes images in a specific way.  The brain takes about 200 milliseconds to recognize an image. Then, the brain responds emotionally to the image. After about a second the brain begins to rationalize what it is seeing. <i>Agile</i>Brain measures emotional reaction and filters out the rational response. If you had more time to react to the image, your rational response would start to take over. As they say, "go with your gut."</div>
+</div>
+
+<div class='row center'><div class='col-12 header'>
+How Does <i>Agile</i>Brain Work?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+The <i>Agile</i>Brain methodology plumbs the mind’s depths systematically and with high validity. The <i>Agile</i>Brain image-based exercise provides a sentence completion prompt that you complete by selecting from a set of related, validated images. <i>Agile</i>Brain maps your responses (both the images selected and the speed of those selections) corresponding to each of the twelve emotional cells (four domains – self, material, social, spiritual – and 3 levels – foundational, experiential, aspirational). An algorithm is then applied that converts the selection data into a measure of emotional intensity. When used in combination with traditional assessment measures, <i>Agile</i>Brain has been shown to signiﬁcantly increase the explanatory power of the outcome you are trying to measure. 
+</div></div>
+
+<br/>
+
+<div class='row center'><div class='col-12 header'>
+What's with the Iceberg in the <i>Agile</i>Brain Logo?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+Icebergs ﬂoat low with only 10% showing above the waterline. Our brains are the same. Neuroscience shows that only 10% of brain activity occurs at the conscious (cognitive or rational) level. That means fully 90% of brain activity, including your emotions, operate “below the waterline.” If you think of the brain as an iceberg, then using a traditional cognitive assessment only scratches the surface. But we know that there’s a lot lurking under the surface! That’s what <i>Agile</i>Brain is all about.
+</div></div>
+
+<br/>
+
+<div class='row center'><div class='col-12 header'>
+How Can I Be Sure that <i>Agile</i>Brain Works?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+The <i>Agile</i>Brain methodology has been developed by behavioral scientists over a twenty-year period. The approach has been independently validated and shown to provide more accurate measurement than other so-called neuroscience-based assessments. Ultimately, however, the most important test is you. Did the <i>Agile</i>Brain exercise and the feedback you’ve received resonate with you? If so, we’re glad and encourage you to reﬂect on and take positive steps to address your emotional needs.
+</div></div>
+<br/>
+
+<div class='row center'><div class='col-12 header'>
+I Thought Anger, Joy, and Envy Were Emotions?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+They are but they are “presenting” emotions. <i>Agile</i>Brain measures the underlying emotional needs that can present as anger (e.g., feeling that you have been treated unjustly), joy (e.g.,experiencing success), envy (e.g., when a coworker is recognized but you remain unrecognized) or other presenting feelings. If you experience a presenting feeling, use the <i>Agile</i>Brain framework to help ask what’s going on deeper.
+</div></div>
+
+<br/>
+
+<div class='row center'><div class='col-12 header'>
+Can I Take <i>Agile</i>Brain Again?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+Yes, we would be delighted to see you again. <i>Agile</i>Brain is designed to measure your emotional / motivational state at a speciﬁc time. So, don’t retake it right now, but do come back when you feel diﬀerently (stuck/unstuck, growing/stagnating, encouraged/discouraged) or when your situation changes (e.g., new job, promotion, layoff, new family situation, new life event).
+</div></div>
+
+<br/>
+
+<div class='row center'><div class='col-12 header'>
+Who is Leading Indicator Systems?
+</div></div>
+
+<div class='row'><div class='col-12 description'>
+Leading Indicator Systems (or LIS for short) is a Boston-based (USA) ﬁrm dedicated to human capital research and assessment. LIS employees are software engineers, program designers, and social scientists. The <i>Agile</i>Brain framework and assessment are innovations from LIS.
+</div></div>
+
+<br><hr class="hr-separator excludeFromPrinting" />
+
+<div class='row center'>
+<div class='col-12 description'><a target="_blank" href="https://agilebrain.com/lp/abfreecoach-banner"><img src="https://content.leadingindicator.com/Images/AB_AdPanel.png" alt="Are you a professional coach? Learn how AgileBrain can help you build better coaching plans." width="99%"></a><br><br></div>
+</div>
+
+<div class='row center'>
+<div class='LineCopyright'>Copyright © 2022-2023 Leading Indicator Systems. All rights reserved.
+
+<br>
+
+<a href="JavaScript:newPopup('https://agilebrain.com/privacy-policy');" style="text-decoration:none;");">Privacy Policy</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="JavaScript:newPopup('https://agilebrain.com/terms-of-service');" style="text-decoration:none;");">Terms of Service</a>
+
+</div></div>
+
+</div></div>
+                    </div>
+                </div>
+
+                <div id="shareDialog" class="tab-pane">
+                    <div id="divShareHeader" class="div-section">
+                        <div id="shareHeader"><div class='col-2 header center'>Save Your Results</div></div>
+                    </div>
+                    <div id="divSharePreSection" class="div-section">
+                        <div id="sharePreSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+Enter your name and email below. Your name will appear on your results as entered below and you will receive an email link to return to your results later.<br><br>Rest assured; we will never share your personal data. See our <a href="JavaScript:newPopup('https://agilebrain.com/privacy-policy');" style="text-decoration:none;");">Privacy Policy</a> for more information.</div>
+                    </div>
+                    <div id="divShareYourName" class="div-input-text">
+                        <input id="shareYourName" type="text" class="input-text" placeholder="Your Name" />
+                    </div>
+                    <div id="divShareYourEmail" class="div-input-text">
+                        <input id="shareYourEmail" type="email" class="input-text" placeholder="Your Email" />
+                    </div>
+                    <div id="divShareCoachSubscriptionCheckbox" class="div-input-checkbox">
+                        <span>
+                            <label for="cbShareCoachSubscription">
+                                <input id="cbShareCoachSubscription" type="checkbox" class="input-checkbox" />
+                                I am a coach/care professional and would like to learn how <i>Agile</i>Brain can benefit my practice
+                            </label>
+                        </span>
+                    </div>
+                    <div id="divShareEmotionsSubscriptionCheckbox" class="div-input-checkbox">
+                        <span>
+                            <label for="cbShareEmotionsSubscription">
+                                <input id="cbShareEmotionsSubscription" type="checkbox" class="input-checkbox" />
+                                Please send me research and information on the science of emotions
+                            </label>
+                        </span>
+                    </div>
+                    <div id="divSaveButton" class="submit-button">
+                        <button id="btnSave" class="button"><i class="fa fa-fw">&nbsp;</i> Save <i class="fa fa-fw">&nbsp;</i></button>
+                    </div>
+                    <div id="divLblSave" class="div-lbl-save">
+                        <span id="lblSave"></span>
+                    </div>
+                    <div id="divShareSection" class="div-section">
+                        <div id="shareSection"><div class='col-2 header center'>Share Your Results</div>
+
+<br>Enter the name and email for the person you are sharing your results with. We encourage you only to share your results with a trusted relationship. Add a personalized note if you would like. We will email a link with your message to that person and a copy to you.</div>
+                    </div>
+                    <div id="divShareToCheckbox" class="div-input-checkbox">
+                        <input id="cbShare" type="checkbox" class="input-checkbox" />
+                        <label for="cbShare">Share my results with...</label>
+                    </div>
+                    <div id="divShareToName" class="div-input-text">
+                        <input id="shareToName" type="text" class="input-text" placeholder="Share to Name" />
+                    </div>
+                    <div id="divShareToEmail" class="div-input-text">
+                        <input id="shareToEmail" type="email" class="input-text" placeholder="Share to Email" />
+                    </div>
+                    <div id="divShareToRelationship" class="div-input-text">
+                        <select id="shareToRelationship" name="shareToRelationship" class="input-text" form="form1">
+                            <option value='0'>Select Relationship</option>
+<option value='coach'>Coach</option>
+<option value='therapist'>Therapist</option>
+<option value='mentor'>Mentor</option>
+<option value='family'>Family Member</option>
+<option value='friend'>Friend</option>
+<option value='spiritualadvisory'>Spiritual Advisor</option>
+<option value='other'>Other</option>
+<option value='noresponse'>I Prefer Not to Say</option>
+                        </select>
+                    </div>
+                    <div id="divShareToMessage" class="div-input-text">
+                        <textarea id="shareToMessage" rows="10" cols="40" class="input-text" placeholder="Personalized Message to Include"></textarea>
+                    </div>
+
+                    <div id="divSharePreButtonSection" class="div-section">
+                        <div id="sharePreButtonSection"></div>
+                    </div>
+                    <div id="divShareButton" class="submit-button">
+                        <button id="btnShare" class="button"><i class="fa fa-fw">&nbsp;</i> Share <i class="fa fa-fw">&nbsp;</i></button>
+                    </div>
+                    <div id="divLblShare" class="div-lbl-share">
+                        <span id="lblShare"></span>
+                    </div>
+                    <div id="divSharePostButtonSection" class="div-section">
+                        <div id="sharePostButtonSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+<div class='container feedback'>
+
+<br><hr class="hr-separator excludeFromPrinting" />
+
+<div class='row center excludeFromPrinting'>
+<div class='col-12 description'><a target="_blank" href="https://agilebrain.com/lp/abfreecoach-banner"><img src="https://content.leadingindicator.com/Images/AB_AdPanel.png" alt="Are you a professional coach? Learn how <i>Agile</i>Brain can help you build better coaching plans." width="99%"></a><br><br></div>
+</div>
+
+<div class='row center excludeFromPrinting'>
+<div class='LineCopyright'>Copyright © 2022-2023 Leading Indicator Systems. All rights reserved.
+
+<br>
+
+<a href="JavaScript:newPopup('https://agilebrain.com/privacy-policy');" style="text-decoration:none;");">Privacy Policy</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="JavaScript:newPopup('https://agilebrain.com/terms-of-service');" style="text-decoration:none;");">Terms of Service</a>
+
+</div></div>
+
+</div></div>
+                    </div>
+                </div>
+                <div id="contactUsDialog" class="tab-pane">
+                    <div id="divContactUsHeader" class="div-section">
+                        <div id="contactUsHeader"><div class='row center'>
+<div class='col-12 header'>Get Help</div>
+</div></div>
+                    </div>
+                    <div id="divContactUsSection" class="div-section">
+                        <div id="contactUsSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+<div class='feedback'>
+<div class='row'>
+<div class='col-12 description'>Get Immediate Help in a Mental Health Crisis</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li>In the US, Call <b>911</b> for emergency services</li>
+<li>In the US, Call or text <b>988</b> or chat at <a href="JavaScript:newPopup('https://988lifeline.org')">https://988lifeline.org</a> for suicide and crisis lifeline</li>
+<li>In the US, Visit <a href="JavaScript:newPopup('https://mentalhealth.gov/get-help/immediate-help')">https://mentalhealth.gov/get-help/immediate-help</a></li>
+<li>In other areas, Call your local emergency services</li>
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>Find a Mental Health Therapist</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li>The American Psychological Association offers a directory of therapists -- <a href="JavaScript:newPopup('https://locator.apa.org/')">https://locator.apa.org/</a></li>
+<li>The International Therapy Directory offers a directory of therapists -- <a href="JavaScript:newPopup('https://internationaltherapistdirectory.com/all-locations/')">https://internationaltherapistdirectory.com/all-locations/</a></li>
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>Find a Personal Coach</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>
+
+<ul>
+
+<li>The International Coaching Federation offers a directory of certified coaches -- <a href="JavaScript:newPopup('https://coachingfederation.org/find-a-coach')">https://coachingfederation.org/find-a-coach</a></li>
+
+</ul></div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'><i>Agile</i>Brain and Leading Indicator Systems make no representations as to the completeness or accuracy of these resources.</div>
+</div>
+
+<div class='row center'>
+<div class='col-12 header'>Give Feedback</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>Help us Learn & Improve</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'>We welcome your feedback. Tell us about your experience and how we can improve <i>Agile</i>Brain.</div>
+</div>
+
+<div class='row'>
+<div class='col-12 description'><i>Agile</i>Brain does not provide mental health services. This mailbox is for feedback. If you are experiencing emotional distress, please seek professional help.<br></div>
+</div>
+
+</div></div>
+                    </div>
+                    <div id="divContactUsYourName" class="div-input-text">
+                        <input id="contactUsYourName" type="text" class="input-text" placeholder="ContactUsNamePlaceholder" />
+                    </div>
+                    <div id="divContactUsYourEmail" class="div-input-text">
+                        <input id="contactUsYourEmail" type="email" class="input-text" placeholder="ContactUsEmailPlaceholder" />
+                    </div>
+                    <div id="divContactUsSubject" class="div-input-text">
+                        <input id="contactUsSubject" type="text" class="input-text" placeholder="ContactUsSubjectPlaceholder" />
+                    </div>
+                    <div id="divContactUsMessage" class="div-input-text">
+                        <textarea id="contactUsMessage" rows="10" cols="40" class="input-text" placeholder="ContactUsMessagePlaceholder"></textarea>
+                    </div>
+                    <div id="divContactUsPreButtonSection" class="div-section">
+                        <div id="contactUsPreButtonSection"></div>
+                    </div>
+                    <div id="divContactUsButton" class="submit-button">
+                        <button id="btnContactUs" class="button"><i class="fa fa-fw">&nbsp;</i> ContactUsButtonText <i class="fa fa-fw">&nbsp;</i></button>
+                    </div>
+                    <div id="divLblContactUs" class="div-lbl-contactus">
+                        <span id="lblContactUs"></span>
+                    </div>
+
+                    <div id="divContactUsPostButtonSection" class="div-section">
+                        <div id="contactUsPostButtonSection"><script type="text/javascript">
+function newPopup(url) { popupWindow = window.open (url,'popUpWindow','height=700,width=800,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes') }
+</script>
+
+<div class='container feedback'>
+
+<br><hr class="hr-separator excludeFromPrinting" />
+
+<div class='row center excludeFromPrinting'>
+<div class='col-12 description'><a target="_blank" href="https://agilebrain.com/lp/abfreecoach-banner"><img src="https://content.leadingindicator.com/Images/AB_AdPanel.png" alt="Are you a professional coach? Learn how AgileBrain can help you build better coaching plans." width="99%"></a><br><br></div>
+</div>
+
+<div class='row center excludeFromPrinting'>
+<div class='LineCopyright'>Copyright © 2022-2023 Leading Indicator Systems. All rights reserved.
+
+<br>
+
+<a href="JavaScript:newPopup('https://agilebrain.com/privacy-policy');" style="text-decoration:none;");">Privacy Policy</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<a href="JavaScript:newPopup('https://agilebrain.com/terms-of-service');" style="text-decoration:none;");">Terms of Service</a>
+
+</div></div>
+
+</div></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        var animate = true;
+        var objArr = [];
+        var laberArr = [];
+        var descArr=[];
+        var pieObjArr = [];
+        var pieLabelArr = [];
+        var pieObjArr = [];
+        var pieLabelArr = [];
+        var prevLabelArr = []; 
+
+        var pieImgArr = [
+        { "key":1, "positive":3, "negative":0,"imgSrc":"1_piechart.png", "text":"3+0"},
+        { "key":2, "positive":2, "negative":0,"imgSrc":"1_piechart.png", "text":"2+0"},
+        { "key":3, "positive":1, "negative":0,"imgSrc":"1_piechart.png", "text":"1+0"},
+        { "key":4, "positive":0, "negative":0,"imgSrc":"0_piechart.png", "text":"0+0"},
+
+        { "key":5, "positive":3, "negative":1,"imgSrc":"2_piechart.png", "text":"3+1"},
+        { "key":6, "positive":2, "negative":1,"imgSrc":"3_piechart.png", "text":"2+1"},
+        { "key":7, "positive":1, "negative":1,"imgSrc":"4_piechart.png", "text":"1+1"},
+        { "key":8, "positive":0, "negative":1,"imgSrc":"5_piechart.png", "text":"0+1"},
+
+        { "key":9, "positive":3, "negative":2,"imgSrc":"6_piechart.png", "text":"3+2"},
+        { "key":10, "positive":2, "negative":2,"imgSrc":"7_piechart.png", "text":"2+2"},
+        { "key":11, "positive":1, "negative":2,"imgSrc":"8_piechart.png", "text":"1+2"},
+        { "key":12, "positive":0, "negative":2,"imgSrc":"5_piechart.png", "text":"0+2"},
+
+        { "key":13, "positive":3, "negative":3,"imgSrc":"9_piechart.png", "text":"3+3"},
+        { "key":14, "positive":2, "negative":3,"imgSrc":"10_piechart.png", "text":"2+3"},
+        { "key":15, "positive":1, "negative":3,"imgSrc":"11_piechart.png", "text":"1+3"},
+        { "key":16, "positive":0, "negative":3,"imgSrc":"5_piechart.png", "text":"0+3"},
+        ];
+        var yaxisLabel = []
+        window.onload = function () {
+            start(5);
+        }
+
+        $('document').ready(function () {
+            $('#shareYourName').val($('#hiddenName').val());
+            $('#shareYourEmail').val($('#hiddenEmail').val());
+            $('#cbShareCoachSubscription').prop('checked', $('#hiddenCbCoachSubscription').val() == 'checked')
+            $('#cbShareEmotionsSubscription').prop('checked', $('#hiddenCbEmotionsSubscription').val() == 'checked')
+            //$('#shareToName').hide();
+            //$('#shareToEmail').hide();
+            //$('#shareToRelationship').hide();
+            //$('#shareToMessage').hide();
+            //$('#btnShare').hide();
+            $('#cbShare').hide();
+            if ('True' === 'True') {
+                $('#cbShare').prop("disabled", false);
+                $('#shareToName').prop("disabled", false);
+                $('#shareToEmail').prop("disabled", false);
+                $('#shareToRelationship').prop("disabled", false);
+                $('#shareToMessage').prop("disabled", false);
+                $('#btnShare').prop("disabled", false);
+            } else {
+                //$('#cbShare').prop("disabled", true);
+                $('#shareToName').prop("disabled", true);
+                $('#shareToEmail').prop("disabled", true);
+                $('#shareToRelationship').prop("disabled", true);
+                $('#shareToMessage').prop("disabled", true);
+                $('#btnShare').prop("disabled", true);
+            }
+
+            $('#btnSave').on('click', function () {
+                $(this).prop("disabled", true);
+                $(this).html('<i class="fa fa-fw">&nbsp;</i> Save <i class="fa fa-spinner fa-spin"></i>');
+                $('#lblSave').html('');
+                var name = $('#shareYourName').val();
+                var email = $('#shareYourEmail').val();
+                var coachOptIn = $('#cbShareCoachSubscription').prop('checked');
+                var emotionsOptIn = $('#cbShareEmotionsSubscription').prop('checked');
+                PageMethods.SaveResults(52,1,40,10521,11675,1,name,email,coachOptIn,emotionsOptIn,onSuccessSave);
+            });
+
+            $('#btnShare').on('click', function () {
+                $(this).prop("disabled", true);
+                $(this).html('<i class="fa fa-fw">&nbsp;</i> Share <i class="fa fa-spinner fa-spin"></i>');
+                $('#lblShare').html('');
+                var yourName = $('#shareYourName').val();
+                var yourEmail = $('#shareYourEmail').val();
+                var shareToName = $('#shareToName').val();
+                var shareToEmail = $('#shareToEmail').val();
+                var shareToRelationship = $('#shareToRelationship').val();
+                var shareToMessage = $('#shareToMessage').val();
+                PageMethods.ShareResults(52,1,40,10521,11675,1,yourName,yourEmail,shareToName,shareToEmail,shareToRelationship,shareToMessage,onSuccessShare);
+            });
+
+            $('#shareToName').on('focus', function () {
+                resetSaveShare();
+            });
+
+            function resetSaveShare() {
+                $('#lblSave').html('');
+                $('#lblShare').html('');
+            }
+
+            //$('#cbShare').on('click', function () {
+            //    var hide = !$('#cbShare').prop('checked');
+            //    if (hide) {
+            //        $('#shareToName').hide();
+            //        $('#shareToEmail').hide();
+            //        $('#shareToRelationship').hide();
+            //        $('#shareToMessage').hide();
+            //        $('#btnShare').hide();
+            //    } else {
+            //        $('#shareToName').show();
+            //        $('#shareToEmail').show();
+            //        $('#shareToRelationship').show();
+            //        $('#shareToMessage').show();
+            //        $('#btnShare').show();
+            //        $('#lblShare').html('');
+            //    }
+            //});
+
+            $('#btnContactUs').on('click', function () {
+                $(this).prop("disabled", true);
+                $(this).html('<i class="fa fa-fw">&nbsp;</i> ContactUsButtonText <i class="fa fa-spinner fa-spin"></i>');
+                $('#lblShare').html('');
+                var yourName = $('#contactUsYourName').val();
+                var yourEmail = $('#contactUsYourEmail').val();
+                var subject = $('#contactUsSubject').val();
+                var message = $('#contactUsMessage').val();
+                PageMethods.ContactUs(52, 1, 40, 10521, 11675, 1, yourName, yourEmail, subject, message, onSuccessContactUs);
+            });
+
+
+        });
+
+        //function beforePrint () {
+        //    for (var id in Chart.instances) {
+        //        Chart.instances[id].resize()
+        //    }
+        //}
+
+        //if (window.matchMedia) {
+        //    let mediaQueryList = window.matchMedia('print')
+        //    mediaQueryList.addListener((mql) => {
+        //        if (mql.matches) {
+        //            beforePrint()
+        //        }
+        //    })
+        //}
+
+        //window.onbeforeprint = beforePrint
+        function onSuccessSave(s) {
+            var results = JSON.parse(s);
+            $('#btnSave').html('<i class="fa fa-fw">&nbsp;</i> Save <i class="fa fa-fw">&nbsp;</i>');
+            $('#btnSave').prop("disabled", false);
+            $('#lblSave').html(results.statusMessage);
+            $('#lblShare').html('');
+            $('#hiddenName').val($('#shareYourName').val());
+            $('#hiddenEmail').val($('#shareYourEmail').val());
+            $('#hiddenCbCoachSubscription').prop('checked', $('#cbShareCoachSubscription').prop('checked') == 'checked')
+            $('#hiddenCbEmotionsSubscription').prop('checked', $('#cbShareEmotionsSubscription').prop('checked') == 'checked')
+            $('#shareToName').prop("disabled", false);
+            $('#shareToEmail').prop("disabled", false);
+            $('#shareToRelationship').prop("disabled", false);
+            $('#shareToMessage').prop("disabled", false);
+            $('#btnShare').prop("disabled", false);
+        }
+
+
+      
+
+
+
+        function onSuccessShare(s) {
+            var results = JSON.parse(s);
+            $('#btnShare').html('<i class="fa fa-fw">&nbsp;</i> Share <i class="fa fa-fw">&nbsp;</i>');
+            $('#btnShare').prop("disabled", false);
+            $('#lblShare').html(results.statusMessage);
+            $('#lblSave').html('');
+            if (results.status == 0) {
+                $('#shareToName').val('');
+                $('#shareToEmail').val('');
+                $('#shareToRelationship').val('0');
+                $('#shareToMessage').val('');
+            }
+        }
+
+        function onSuccessContactUs(s) {
+            var results = JSON.parse(s);
+            $('#btnContactUs').html('<i class="fa fa-fw">&nbsp;</i> ContactUsButtonText <i class="fa fa-fw">&nbsp;</i>');
+            $('#btnContactUs').prop("disabled", false);
+            $('#lblContactUs').html(results.statusMessage);
+            if (results.status == 0) {
+                $('#contactUsYourName').val('');
+                $('#contactUsYourEmail').val('');
+                $('#contactUsSubject').val('');
+                $('#contactUsMessage').val('');
+            }
+        }
+
+        function changeActiveTab(tab) {
+            window.scrollTo(0,0);
+            $('#resultsTab').removeClass('active');
+            $('#interpretationTab').removeClass('active');
+            $('#faqTab').removeClass('active');
+            $('#shareTab').removeClass('active');
+            $('#contactUsTab').removeClass('active');
+            $(tab).addClass('active');
+        }
+
+        function print_canvasr() {
+            var canvas = document.getElementById('myCanvas');
+            var win1 = window.open();
+            win1.document.write("<br><img src = '" + canvas.toDataURL() + "'/>");
+            win1.print();
+            win1.location.reload();
+        }
+
+        function start(imagesSelected) {
+            //var body = document.getElementById("body");
+            //var html_content = document.getElementById('html-content');
+            var canvas_content = document.getElementById('canvas-content');
+            var variable_feedback = document.getElementById('feedback');
+            var intro_section = document.getElementById('intro');
+            var intro_section2 = document.getElementById('intro2');
+            var top = document.getElementById('top');
+            var top2 = document.getElementById('top2');
+            //variable_feedback.innerHTML = 'testing 1, 2, 3...';
+
+            //html_content.style.display = 'block';
+            //canvas_content.style.display = 'inline-block';
+            //variable_feedback.style.display = 'block';
+            //intro_section.style.display = 'block';
+            //body.style.background = 'white';
+
+            if ("1" == "2" || "1" == "3" || "1" == "4") {
+                intro_section2.innerHTML = "";
+                intro_section2.style.display = 'block';
+                top2.style.display = 'block';
+            } else if (imagesSelected > 0) {
+                canvas_content.style.display = 'inline-block';
+                variable_feedback.style.display = 'block';
+                intro_section.style.display = 'block';
+                top.style.display = 'block';
+                var json = getData();
+                var rowDefinitionsJson = getRowDefinitions();
+                var columnDefinitionsJson = getColumnDefinitions();
+                var cellDefinitionsJson = getCellDefinitions();
+                var emotionalActivationLevelDefinitionsJson = getEmotionalActivationLevelDefinitions();
+                var pieLabelsJson = getPieLabels();
+                var configuration = getConfiguration();
+                var emotionalNeedLabel = "Emotional Need:";
+                var emotionalActivationLabel = "Emotional Activation:";
+                var promotionPreventionLabel = "Promotion/Prevention:";
+                var promotionDefinitionLabel = "Promotion Definition:";
+                var feedbackLabel = "FeedbackLabel";
+                var preventionDefinitionLabel = "Prevention Definition:";
+                var prescriptionLabel = "PrescriptionLabel";
+                intro_section.innerHTML = intro(configuration, true);
+                graph(json);
+                variable_feedback.innerHTML = instructions(configuration) + feedback(configuration, json, 1) + feedback(configuration, json, 2) + feedback(configuration, json, 3) + summary(configuration) + about(configuration);
+                //prescription(json);
+            } else {
+                intro_section2.innerHTML = "<div style='font-family: Arial; font-size: 11pt; margin-left: 20px;'><div><img alt='AgileBrain Logo' src='https://content.leadingindicator.com/Images/AgileBrainLogo2023-2.png' width='125'></div><div>We are unable to produce results since you did not select any images. If this was a mistake then you may retake the assessment.</div></div>";
+                intro_section2.style.display = 'block';
+                top2.style.display = 'block';
+            }
+                
+            //icebergData
+        }
+        
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+       
+        function graph(icebergData) {
+
+            var canvas_content_section = document.getElementById("canvas-content");
+            var width = canvas_content_section.offsetWidth;
+            var height = canvas_content_section.offsetHeight;
+            var xAxisLabels = ['Self', 'Material', 'Social', 'Spiritual'];
+            var yAxisLabels = ['Aspirational', 'Experietial', 'Foundational'];
+            var configurationData = {
+                xAxisLabels: xAxisLabels,
+                yAxisLabels: yAxisLabels
+            };          
+           
+
+            
+            if (animate) {
+                var percentDone = -.35;
+
+                window.requestAnimationFrame(function(timestamp) {
+                    drawGraph(width, icebergData, configurationData, percentDone, false);
+                });
+            } else {
+                drawGraph(width, icebergData, configurationData, 1, false);
+            }
+          
+        }
+
+        function intro(configuration, isFirstPage) {
+            var html = "";
+
+            if (isFirstPage) {
+                html += "<div class='row'>";
+                html += "<div class='col-md-2 col-md-push-10 col-sm-3 col-sm-push-9 col-xs-4 col-xs-push-8 imageArea'>";
+                html += "<img src='https://content.leadingindicator.com/Images/AgileBrainLogo2023-2Blue.png' alt='AgileBrain&#8480; Logo'>";
+                html += "</div>";
+                html += "<div class='intro col-md-10 col-md-pull-2 col-sm-9 col-sm-pull-3 col-xs-8 col-xs-pull-4'>";
+                html += "<div class='titleArea'>";
+                html += "<div class='title'>";
+                html += configuration.title;
+                html += "</div>";
+                html += "<div class='name'>";
+                html += configuration.name;
+                html += "</div>";
+                html += "<div class='date'>";
+                html += configuration.submissionDate;
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+                html += "<div class='row'>";
+                html += "<div class='itemTextLeadIn itemTextPlacementFirstPage col-sm-12'>";
+                html += configuration.sentenceIntro;
+                html += "<div class='itemText'>";
+                html += configuration.sentenceCompletionTask;
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+                //html += "</div>";
+            } else {
+                html += "<div class='forPrinting row'>";
+                html += "<div class='intro col-md-10 col-sm-9 col-xs-8'>";
+                html += "<div class='titleArea'>";
+                html += "<div class='title'>";
+                html += "<div class='itemTextLeadIn'>";
+                html += configuration.sentenceIntro;
+                html += "</div>";
+                html += "<div class='itemText'>";
+                html += configuration.sentenceCompletionTask;
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+                html += "<div class='imageArea col-md-2 col-sm-3 col-xs-4'>";
+                html += "<img src='https://content.leadingindicator.com/Images/AgileBrainLogo2023-2Blue.png' alt='AgileBrain&#8480; Logo'>";
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
+            }
+
+            return html;
+        }
+
+        function instructions(configuration) {
+
+            var html = "";
+
+            // html += "<div class='row'>";
+            // html += "<div class='col-sm-1'></div>"
+            // html += "<div class='col-sm-10 instructions'>";
+            html += "<div class='container activationMessage'>";
+            html += configuration.activationMessage;
+            html += "</div>";
+            html += "<div class='container feedback'>";
+            html += configuration.instructions;
+            html += "</div>";
+            // html += "</div>";
+
+            return html;
+        }
+
+        function summary(configuration) {
+
+            var html = "";
+
+            html += "<div class='pagebreak spacer excludeFromPrinting'></div>";
+            //html += intro(configuration, false);
+            html += "<div class='container feedback excludeFromPrinting'>";
+            html += configuration.summary;
+            html += "</div>";
+
+            return html;
+        }
+
+        function about(configuration) {
+
+            var html = "";
+
+            html += "<div class='pagebreak spacer excludeFromPrinting'></div>";
+            html += intro(configuration, false);
+            html += "<div class='container feedback excludeFromPrinting'>";
+            html += configuration.about;
+            html += "</div>";
+
+            return html;
+        }
+
+        function feedback(configuration, data, option) {
+
+            var html = "";
+
+
+            if (option == 3) {
+                html += "<div class='forPrinting'>";
+            }
+
+            html += "<div class='pagebreak spacer'></div>";
+            html += intro(configuration, false);
+
+            if (option == 3) {
+                html += "<div class='container feedback forPrinting'>";
+            } else {
+                html += "<div class='container feedback'>";
+            }
+
+            html += "<div class='row center'>";
+            html += "<div class='col-sm-12 header'>";
+
+            html += (option == 1) ? configuration.feedbackIntroHeader : (option == 2) ? configuration.prescriptionIntroHeader : configuration.yourReflectionsIntroHeader;
+            html += "</div>";
+            html += "</div>";
+            html += "<div class='row'>";
+            html += "<div class='col-sm-12 description'>";
+            html += (option == 1) ? configuration.feedbackIntro : (option == 2) ? configuration.prescriptionIntro : configuration.yourReflectionsIntro;
+            html += "</div>";
+            html += "</div>";
+
+            html += (option == 1) ? "<div class='row left feedbackTableHeader'>" : (option == 2) ? "<div class='row prescriptionTableHeader'>" : "<div class='row yourReflectionsTableHeader'>";
+            html += "<div class='col-sm-3 center'><span class='align-middle'>";
+            html += configuration.emotionsColumnHeader;
+            html += "</span></div>";
+            html += "<div class='col-sm-9 left'><span class='align-middle'>";
+            html += (option == 1) ? configuration.feedbackColumnHeader : (option == 2) ? configuration.prescriptionColumnHeader : configuration.yourReflectionsColumnHeader;
+            html += "</span></div>";
+            html += "</div>";
+
+
+            for (var threshold = 4; threshold >= 1; threshold--) {
+
+                for (var index = 0; index < data.length; index++) {
+                    
+                    var item = data[index];
+
+                    if (item.pie == true && (item.total == threshold || (item.total > threshold && threshold == 4))) {
+                        html += "<hr class='separator' />";
+                        html += "<div class='row center'>";
+
+                        html += "<div class='col-sm-3 center mylabel'><span class='align-middle'>";
+                        html += item.label;
+                        html += "</span></div>";
+                        html += "<div class='col-sm-9 left'>";
+                        html += (option == 1) ? item.feedback : (option == 2) ? item.prescription : "<div class='yourReflectionsSpace'></div>";
+                        html += "</div>";
+                        html += "</div>";
+                    }
+
+                }
+            }
+
+            if (option == 3 && configuration.yourReflectionsAdditionalCategory != null && configuration.yourReflectionsAdditionalCategory != "") {
+                html += "<hr class='separator' />";
+                html += "<div class='row'>";
+
+                html += "<div class='col-sm-3 center mylabel'>";
+                html += configuration.yourReflectionsAdditionalCategory;
+                html += "</div>";
+                html += "<div class='col-sm-9 left'>";
+                html += "<div class='yourReflectionsSpace'></div>";
+                html += "</div>";
+                html += "</div>";
+            }
+
+            html += "</div>";
+
+            if (option == 3) {
+                html += "</div>";
+            }
+
+
+            return html;
+
+        }
+
+        function prescription(data) {
+
+        }
+      
+        
+        var getLabel = getPieLabels();
+        var getEmotionalActivationLabel = getEmotionalActivationLevelDefinitions();
+        for(var i=0;i<getLabel.length ;i++){
+            var labels = getLabel[i];
+            prevLabelArr.push(labels);
+        }
+        
+        var elem = document.getElementById('myCanvas');
+        var emotionalNeedLabel = "Emotional Need:";
+        var emotionalActivationLabel = "Emotional Activation:";
+        var promotionPreventionLabel = "Promotion/Prevention:";
+        var promotionDefinitionLabel = "Promotion Definition:";
+        var feedbackLabel = "FeedbackLabel";
+        var preventionDefinitionLabel = "Prevention Definition:";
+        var prescriptionLabel = "PrescriptionLabel";
+
+        function openModal(name, content,description, headerBgColor, textColor, positive, negative,definition,isPie,positiveDefinition,negativeDefinition,emotionalLavel,total) {
+            var modalTitle = document.getElementById("modalTitle");
+            var modalContent = document.getElementById("modalContent");
+            var modalDescription = document.getElementById("modalDescription");
+            var modalElement = document.getElementById("myModal");
+            var modalHeader = document.querySelector(".modal-header");
+            var imageWrapper = document.getElementById("imageWrapper");
+            var modalEmotion = document.getElementById("modalEmotion");
+            var modalPromotion = document.getElementById("modalPromotion");
+            if (modalTitle && modalContent) {
+               
+                if(isPie){
+                    modalTitle.innerHTML = `<span style="color: black"><b>${name}</b></span> `;
+                    modalContent.innerHTML = `<span style="color: black;"><b>${feedbackLabel} </b> </span>` + content;
+                    modalDescription.innerHTML = `<span style="color: black;"><b>${prescriptionLabel} </b></span>` + description;
+                    modalPiePositive.innerHTML =`<span style="color: rgb(68, 114, 196);"><b>${promotionDefinitionLabel}</b> </span>` + positiveDefinition;
+                    modalPieNegative.innerHTML =`<span style="color: rgb(237, 125, 49);"><b>${preventionDefinitionLabel} </b> </span>` + negativeDefinition;
+                }else{
+                    modalTitle.innerHTML = `<span style="color: black"><b>${name}</b></span> `;
+                    modalContent.innerHTML = `<span style="color: rgb(68, 114, 196);"><b>${promotionDefinitionLabel} </b> </span>` + positiveDefinition;
+                    modalPiePositive.innerHTML = '';
+                    modalDescription.innerHTML = `<span style="color: rgb(237, 125, 49);"><b>${preventionDefinitionLabel} </b></span>` + negativeDefinition;
+                    modalPieNegative.innerHTML = '';
+                    if(modalPiePositive.innerHTML == '' && modalPieNegative.innerHTML == ''){
+                        modalPiePositive.style.paddingTop = "0px";
+                        modalPieNegative.style.paddingTop = "10px"
+                    }
+                   
+                }
+
+                var pieImages = pieImgArr.find(function(element) {
+                    return (element.positive === positive && element.negative === negative) ;
+                });
+                var pieLabels = prevLabelArr.find(function (element) {
+                    return (
+                     positive === element.positiveCount &&
+                      negative === element.negativeCount 
+                    );
+                });      
+               // var getEmotionalLevelLabel = prevLabelArr.find(function(elem) {
+               //return total == elem.level
+               // })
+               
+                if (pieImages) {
+                    if (emotionalLavel) {
+                        if(total == 1 || total == 0 ){
+                            imageWrapper.innerHTML = `<span>${emotionalActivationLabel} </span>${emotionalLavel}<br/>`;
+                        }else{
+                            imageWrapper.innerHTML = `<span>${emotionalActivationLabel} </span>${emotionalLavel}<br/><span>${promotionPreventionLabel}</span><img src="https://content.leadingindicator.com/Images/AB_Results/${pieImages.imgSrc}" alt="Error" width="35px" height="35px">${pieLabels.label}`;
+                        }
+                    } else {
+                        imageWrapper.innerHTML = `<span>${emotionalActivationLabel} </span>Matched level not found<br/><span>${promotionPreventionLabel}</span><img src="https://content.leadingindicator.com/Images/AB_Results/${pieImages.imgSrc}" alt="Error" width="35px" height="35px">${pieLabels.label}`;
+                    }
+                    imageWrapper.style.backgroundColor = headerBgColor;
+                    imageWrapper.style.color = textColor;
+                    imageWrapper.style.display = "block"; 
+                } else {
+                    modalContent.innerHTML = '';
+                    modalTitle.innerHTML = `<span style="color: black"><b>${name}</b></span>`;
+                    modalDescription.innerHTML = `<div style="font-size:18px">${definition}</div>`;
+                    imageWrapper.style.display = "none";
+                }
+               
+                if (textColor) {
+                    
+                    modalHeader.style.color = "rgb(68, 114, 196)";
+                } else if (textColor) {
+                    
+                    modalHeader.style.color = textColor;
+                    modalHeader.style.backgroundColor = '';
+                } else {
+                    modalHeader.style.backgroundColor = ''; 
+                }
+            }
+
+                
+                $('#myModal').modal('show'); 
+            }// Show Bootstrap modal
+        
+       
+        elem.addEventListener('click', function (event) {
+               
+            var elemLeft = elem.offsetLeft;
+            var elemTop = elem.offsetTop;
+            
+            var x = event.pageX - elemLeft, y = event.pageY - elemTop;
+            var pieChartHitFound = false;
+            // pieChart Detection
+            //pieObjArr.forEach(function (element) {
+            //    if (element.radius){
+            //        var pieChartHit = 
+            //        Math.sqrt(
+            //          Math.pow((x - element.x), 2) + 
+            //          Math.pow((y - element.y), 2)
+            //        ) < element.radius;
+
+            //        if(pieChartHit) {
+            //            pieChartHitFound = true;
+            //            openModal("Hello", "pie-chart","PieChart",element.color,element.txtColor );  
+            //        }
+            //    }
+            //}); 
+            //if (pieChartHitFound){
+            //    return;
+            //}
+            
+            const content = objArr[0].desc ;
+           
+               
+            objArr.forEach(function (element) { 
+                if ((y > element.y && y < element.y + element.height) && (x > element.x && x < element.x + element.width)) {
+                    var combinedLabel = undefined || "matched label not found";
+                    var highestLevel = null;
+                    for(var j=0;j<getEmotionalActivationLabel.length;j++){
+                        var emotionalDefinition = getEmotionalActivationLabel[j]
+                        if (element.total > 4 ) {
+                            if (!highestLevel || emotionalDefinition.level > highestLevel.level) {
+                                highestLevel = emotionalDefinition;
+                                combinedLabel = highestLevel.definition
+                            }
+                        } else if (element.total === emotionalDefinition.level) {
+                            combinedLabel = emotionalDefinition.definition;
+                            break; 
+                        }
+                     } 
+
+                    var contentToShow = element.desc || content;
+                    var descriptionToShow = element.desc2 || "No description available";
+                    var headerBgcolor = element.bgColor
+                    var headerTxtColor = element.txtColor;
+                    if (contentToShow) {
+                        openModal(element.name || element.headerLabel, contentToShow, descriptionToShow, headerBgcolor,headerTxtColor, element.positive, element.negative,element.definition,element.isPie, element.positiveDefinition, element.negativeDefinition,combinedLabel,element.total);
+                    }
+                }
+            });
+        }, false);
+
+       
+
+        var  maxWidth = elem.getAttribute("width"), maxHeight = elem.getAttribute("height");
+
+        var scaleValue = 1, oldScaleValue = 1;
+
+        function drawGraph(width, data, configurationData, percentDone, blankMode) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            canvas.width = width ;
+            canvas.height = width / 1.80;
+
+            ctx.scale(width / 1000.0, width / 1000.0);
+
+            scaleValue = width / 1000.0;
+            if (scaleValue != oldScaleValue){
+                objArr = [];
+                labelArr = [];
+                pieLabelArr=[];
+                pieObjArr=[];
+                descArr=[];
+                oldScaleValue = scaleValue;    
+            }
+
+            var img = document.getElementById("background-image");
+
+            if (img == null) {
+                //ctx.fillStyle = "pink";
+                //ctx.fillRect(0, 0, 1000.0, 1000.0);
+            } else {
+                ctx.drawImage(img, 0, 0, c.width, c.height);
+            }
+
+            // To change the color on the rectangle, just manipulate the context
+            var initialYOffset = 100;
+            var initialXOffset = 220;
+
+
+            var outerMargin = 20;
+            var outerBoxRadius = 10;
+            var spacingY = 30;
+            var spacingX = 30;
+            var boxWidth = 150;
+            var boxHeight = 120;
+            var radius = 15;
+
+
+            var startingYOffset = initialYOffset + boxHeight + spacingY;
+            var startingXOffset = initialXOffset + boxWidth + spacingX + (boxWidth + spacingX) / 2.0;
+
+            var numberedCircleDiameter = 28;
+
+            //drawNumberedCircle(ctx, outerMargin / 2 + numberedCircleDiameter / 2, initialYOffset - outerMargin * 3.5 + 38 / 2, 1);
+
+            //roundRect(ctx, 0 + outerMargin * 1.0 + numberedCircleDiameter, initialYOffset - outerMargin * 3.5, 1000 - outerMargin * 2.0 - numberedCircleDiameter, 38, outerBoxRadius, false, true, null, 0 + outerMargin * 1.0, initialYOffset - outerMargin * 3.0, 1);
+
+            //drawNumberedCircle(ctx, outerMargin / 2 + numberedCircleDiameter / 2, initialYOffset, 2);
+            //roundRect(ctx, 0 + outerMargin * 1.0 + numberedCircleDiameter, initialYOffset - outerMargin, initialXOffset - outerMargin * 2.5 - numberedCircleDiameter, boxHeight * 3 + spacingY * 2 + outerMargin * 2, outerBoxRadius, false, true, null, 0 + outerMargin * 1.0, initialYOffset - outerMargin, 1);
+
+            //roundRect(ctx, initialXOffset - outerMargin, initialYOffset - outerMargin, boxWidth * 4 + spacingX * 3 + outerMargin * 2, boxHeight * 3 + spacingY * 2 + outerMargin * 2, outerBoxRadius, false, true, null, initialXOffset - outerMargin, initialYOffset - outerMargin, 1);
+
+            var blankItem = {color:"rgb(229, 241, 255)", textColor:"rgb(68, 114, 196)"}
+            var cells = getCellDefinitions();
+        
+            for (var index = 0; index < data.length; index++) {
+                for (let j = 0; j < cells.length; j++) {
+                    var item = data[index];
+                    var cellDesc = cells[j];
+        
+                    var getPieLabel = getPieLabels();
+                    var pieLabels = getPieLabel[index];
+                    var emotionalActivations = getEmotionalActivationLevelDefinitions();
+                    var emotionalDefinition = emotionalActivations[index];
+          
+                    if (item.activationLevel == null && item.total >= 4 || item.activationLevel <= 1) {
+                        item.color = "rgb(32, 75, 104)";
+                        item.textColor = "white";
+
+                    } else if (item.activationLevel == null && item.total >= 3 || item.activationLevel <= 2) {
+                        item.color = "rgb(0, 112, 192)"
+                        item.textColor = "white";
+
+                    } else if (item.activationLevel == null && item.total >= 2 || item.activationLevel <= 3) {
+                        item.color = "rgb(157, 195, 230)";
+                        item.textColor = "rgb(68, 114, 196)";
+
+                    } else if (item.activationLevel == null && item.total >= 1 || item.activationLevel <= 4) {
+                        item.color = "rgb(206, 225, 242)";
+                        item.textColor = "rgb(68, 114, 196)";
+
+                    } else {
+                        item.color = "rgb(229, 241, 255)";
+                        item.textColor = "rgb(68, 114, 196)";
+                    }
+
+                    if (item.code == "A3" && cellDesc.code =="A3") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset, initialYOffset, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset, initialYOffset, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "B3" && cellDesc.code == "B3") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "C3" && cellDesc.code == "C3") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "D3" && cellDesc.code == "D3") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.pie, item.negative, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+
+                    if (item.code == "A2" && cellDesc.code == "A2") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "B2" && cellDesc.code == "B2") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "C2" && cellDesc.code == "C2") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "D2" && cellDesc.code == "D2") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+
+                    if (item.code == "A1" && cellDesc.code == "A1") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "B1" && cellDesc.code == "B1") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "C1" && cellDesc.code == "C1") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                    if (item.code == "D1" && cellDesc.code == "D1") {
+                        blankItem.label = item.label;
+                        roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, blankItem, startingXOffset, startingYOffset, 1, true, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                        if (!blankMode)
+                            roundRect(ctx, initialXOffset + boxWidth + spacingX + boxWidth + spacingX + boxWidth + spacingX, initialYOffset + boxHeight + spacingY + boxHeight + spacingY, boxWidth, boxHeight, radius, true, false, item, startingXOffset, startingYOffset, percentDone, blankMode, item.feedback, item.prescription, item.color, item.textColor, item.positive, item.negative, item.pie, cellDesc.positiveDefinition, cellDesc.negativeDefinition, item.total);
+                    }
+                }
+            }
+            ctx.font = "24px Arial";
+
+            if (true || percentDone > 0) {
+                for (var index = 0; index < configurationData.yAxisLabels.length; index++) {
+                    var label = configurationData.yAxisLabels[index];
+                    let hx = initialXOffset - outerMargin * 2.0 - (ctx.measureText(label).width);
+                    let hy = initialYOffset + (index * (boxHeight + spacingY) + (boxHeight / 2) + 7);
+                    ctx.fillText(label, hx, hy);
+
+                    var rowConfigObj = getRowDefinitions();
+                    var rowArr = rowConfigObj.map((obj, index) => Object.assign({ indexValue: configurationData.yAxisLabels[index] }, obj));
+                   
+                    if(!labelArr.includes(label)){
+                        let metrics = ctx.measureText(label);
+                        let actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+                        var rowNumber = rowArr[index].rowNumber;
+                        var definition =  rowArr[index].definition;
+                        var headerLabel = rowArr[index].label;
+
+                        objArr.push({ "x": hx * scaleValue , "y": (hy * scaleValue) - (actualHeight * scaleValue), "width": ctx.measureText(label).width * scaleValue, "height": (actualHeight * scaleValue), "desc":label, "txtColor":item.textColor, "rowNumber":rowNumber, "definition":definition, "headerLabel":headerLabel});
+                        labelArr.push(label);
+                    }
+                }
+
+                for (var index = 0; index < configurationData.xAxisLabels.length; index++) {
+                    var label = configurationData.xAxisLabels[index];
+                    let hx = initialXOffset + (index * (boxWidth + spacingX)) + boxWidth / 2.0 - (ctx.measureText(label).width / 2.0);
+                    let hy = initialYOffset - outerMargin * 2.0 - 3.0;
+                    ctx.fillText(label, hx, hy);
+
+                    var colConfigObj = getColumnDefinitions();
+                    var columnArr = colConfigObj.map((obj, index) => Object.assign({ indexValue: configurationData.xAxisLabels[index] }, obj));
+
+                    if(!labelArr.includes(label)){
+                        let metrics = ctx.measureText(label);
+                        let actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+                        var columnNumber = columnArr[index].columnNumber;
+                        var definition =  columnArr[index].definition;
+                        var headerLabel = columnArr[index].label
+                        objArr.push({ "x": hx * scaleValue , "y": (hy * scaleValue) - (actualHeight * scaleValue), "width": ctx.measureText(label).width * scaleValue, "height": (actualHeight * scaleValue), "desc":label,  "txtColor":item.textColor, "columnNumber":columnNumber, "definition":definition, "headerLabel":headerLabel});
+                        labelArr.push(label);
+                    }
+                }
+            }
+
+            if (false) {
+                var text = "Images selected and speed of selection measure the intensity of need you feel in that need area...";
+                wrapText(ctx, text, 100, 700, 200, 16, 'Arial');
+            }
+
+            if (percentDone < 1) {
+                percentDone = percentDone + .003;
+                window.requestAnimationFrame(function (timestamp) {
+                    if (percentDone < .2) {
+                        drawGraph(width, data, configurationData, percentDone, true);
+                    } else {
+                        drawGraph(width, data, configurationData, percentDone, false);
+                    }
+                });
+            } else if (blankMode == false) {
+                animate = false;
+            }
+        }
+
+
+    
+
+
+
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke, item, startingXOffset, startingYOffset, percentDone, blankMode, feedback, prescription, color, textColor,positive,negative,isPie, positiveDefinition, negativeDefinition,total) {
+            
+            if (percentDone < 0) {
+                x = startingXOffset;
+                y = startingYOffset;
+            }
+            else {
+                x = x + (startingXOffset - x) * (1 - percentDone);
+                y = y + (startingYOffset - y) * (1 - percentDone);
+            }
+
+            ctx.strokeStyle = "rgb(0, 0, 0)";
+
+            if (typeof stroke === 'undefined') {
+                stroke = true;
+            }
+            if (typeof radius === 'undefined') {
+                radius = 5;
+            }
+            if (typeof radius === 'number') {
+                radius = { tl: radius, tr: radius, br: radius, bl: radius };
+            } else {
+                var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
+                for (var side in defaultRadius) {
+                    radius[side] = radius[side] || defaultRadius[side];
+                }
+            }
+
+            if (percentDone >= 0 && item != null) {
+                ctx.fillStyle = item.color;
+            } else {
+                ctx.fillStyle = "rgb(240,240,240)";
+            }
+            ctx.beginPath();
+            ctx.moveTo(x + radius.tl, y);
+            ctx.lineTo(x + width - radius.tr, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+            ctx.lineTo(x + width, y + height - radius.br);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+            ctx.lineTo(x + radius.bl, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+            ctx.lineTo(x, y + radius.tl);
+            ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+            ctx.closePath();
+            if (fill) {
+                ctx.fill();
+            }
+            if (stroke) {
+                ctx.stroke();
+            }
+
+            ctx.font = "24px Arial";
+
+            if (item != null) {
+                var label = item.label;
+                var desc = item.prescription
+                
+                var txtColor = item.txtColor;
+                if (percentDone < .33) {
+                    label = ""; //"Your Results";
+                    ctx.fillStyle = "rgb(68, 114, 196)";
+                } else {
+                    ctx.fillStyle = item.textColor;
+                }
+                var widthAlign =  x + (width / 2) - (ctx.measureText(label).width / 2);
+                var heightAlign = y + (height / 2) + 7;
+                ctx.fillText(label, x + (width / 2) - (ctx.measureText(label).width / 2), y + (height / 2) + 7);
+                if(!labelArr.includes(item.label)){
+                    objArr.push({"name":item.label,"x": x * scaleValue, "y": y * scaleValue, "width": width * scaleValue, "height": height * scaleValue, "desc":feedback, "desc2": prescription, "txtColor":textColor, "bgColor":color, "positive":positive, "negative":negative, "isPie":isPie, "positiveDefinition":positiveDefinition, "negativeDefinition":negativeDefinition,"total":total});
+                    labelArr.push(item.label);
+                }
+                
+                if (blankMode == false) {
+                    drawPieChart(ctx, x + width - width * .08, y + height - height * .10, width * .10, item, percentDone);
+                }
+            }
+        }
+
+        function drawNumberedCircle(ctx, centerX, centerY, label) {
+            var radius = 28 / 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = "rgb(68, 114, 196)";
+            ctx.fill();
+            ctx.font = "18px Arial Bold";
+            ctx.fillStyle = "white";
+            ctx.fillText(label, centerX - (ctx.measureText(label).width / 2), centerY + 5.5);
+        }
+
+        function drawPieChart(ctx, x, y, radius, item, percentDone) {
+            if (percentDone >= .99) {
+                var saveLineWidth = ctx.lineWidth;
+                ctx.lineWidth = radius * .1;
+                if (item != null && item.total > 0 && item.pie == true) {
+                    var positiveAngle = item.positive / item.total * Math.PI * 2;
+                    var negativeAngle = item.negative / item.total * Math.PI * 2;
+                    var offsetX;
+                    var offsetY;
+                    var offset = radius * 0;
+                    var medianAngle;
+                    var beginAngle = Math.PI / 2;
+                    var endAngle = beginAngle;
+                    ctx.beginPath();
+                    ctx.strokeStyle = "white";
+                    ctx.fillStyle = "rgb(46, 117, 182)";
+                    endAngle = endAngle + positiveAngle;
+                    medianAngle = (endAngle + beginAngle) / 2;
+                    offsetX = Math.cos(medianAngle) * offset;
+                    offsetY = Math.sin(medianAngle) * offset;
+                    ctx.moveTo(x + offsetX, y + offsetY);
+                    ctx.arc(x + offsetX, y + offsetY, radius, beginAngle, endAngle);
+                    ctx.lineTo(x + offsetX, y + offsetY);
+                    ctx.stroke();
+                    ctx.fill();
+
+                    if (negativeAngle > 0) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = "white";
+                        ctx.fillStyle = "rgb(237, 125, 49)";
+                        beginAngle = endAngle;
+                        endAngle = endAngle + negativeAngle;
+                        medianAngle = (endAngle + beginAngle) / 2;
+                        offsetX = Math.cos(medianAngle) * offset;
+                        offsetY = Math.sin(medianAngle) * offset;
+                        ctx.moveTo(x + offsetX, y + offsetY);
+                        ctx.arc(x + offsetX, y + offsetY, radius, beginAngle, endAngle);
+                        ctx.lineTo(x + offsetX, y + offsetY);
+                        ctx.stroke();
+                        ctx.fill();
+                    }
+
+                    ctx.lineWidth = saveLineWidth;
+                    //store circle coordinates
+                    var label = item.label;
+                    if (label){
+                        var pieChartLabel = label + '_piechart';
+                        if(!pieLabelArr.includes(pieChartLabel)){
+                            pieObjArr.push({"name":label, "x": x * scaleValue , "y": (y * scaleValue), "radius": radius * scaleValue,"color":item.color, "txtColor":item.textColor});
+                            pieLabelArr.push(pieChartLabel);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        function wrapText(ctx, text, x, y, maxWidth, fontSize, fontFace) {
+            var firstY = y;
+
+            var words = text.split(' ');
+            var line = '';
+            var lineHeight = fontSize * 1.286; // a good approx for 10-18px sizes
+
+            ctx.font = fontSize + "px " + fontFace;
+            ctx.textBaseline = 'top';
+
+            for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
+                var metrics = ctx.measureText(testLine);
+                var testWidth = metrics.width;
+                if (testWidth > maxWidth) {
+                    ctx.fillText(line, x, y);
+                    if (n < words.length - 1) {
+                        line = words[n] + ' ';
+                        y += lineHeight;
+                    }
+                }
+                else {
+                    line = testLine;
+                }
+            }
+            ctx.fillText(line, x, y);
+        }
+
+        function getData() {
+            return [{"code":"A1","label":"Safety","total":5.0,"positive":3.0,"negative":2.0,"pie":true,"feedback":"With regard to Safety, you tend to seek feelings of safety and assurance in the face of challenges. Feeling confident, protected, and comfortable is important to you. And the safety of others is important too.  There is also an element that getting rid of fears and anxieties is a priority for you. By working to lessen insecurities you can get on with living your best life.","prescription":"The need to feel safe is wired into the human brain. Our subconscious brain is continuously monitoring our surroundings for signs of danger. This can be exhausting when your environment -- physical, financial or emotional -- is unstable. What worries exhaust you? Write them down. Talk with your coach or trusted mentor. Once you can put words to those worries, you can find space to maneuver around them toward greater psychological safety.","activationLevel":null},{"code":"A2","label":"Authenticity","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"A3","label":"Potential","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"B1","label":"Autonomy","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"B2","label":"Immersion","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"B3","label":"Success","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"C1","label":"Inclusion","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"C2","label":"Caring","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"C3","label":"Recognition","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"D1","label":"Justice","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"D2","label":"Ethics","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null},{"code":"D3","label":"Purpose","total":0.0,"positive":0.0,"negative":0.0,"pie":false,"feedback":null,"prescription":null,"activationLevel":null}];
+        }
+
+        function getRowDefinitions() {
+            return [{"rowNumber":3,"label":"Aspirational level of attainment","definition":"The aspirational level of attainment is the capstone need of the life domains. It represents the desired endpoints of each of the life domains. The endpoint for the self-domain is fulfilling our full potential; in the material domain, it is achievement of material success; in the social domain, it is achieving high regard and admiration; in the spiritual domain, it is transcending self-interest in pursuit of a higher mission, quest, or purpose."},{"rowNumber":2,"label":"Experiential level of attainment","definition":"The experiential level of attainment is the midpoint of the life domains, between pure potential and its full realization or actualization. It represents a process of transformation and action. To get from safety to living up to your potential, we must establish our unique identities (authenticity). To get from autonomy to material success, we must immerse ourselves in our work. To get from inclusion to recognition, we must form lasting relationships. To get from basic fairness to a higher purpose, we must actively limit our self-interest (ethics)."},{"rowNumber":1,"label":"Foundational level of attainment","definition":"The foundational level of attainment is the point of entry into each of the life domains. It is the most basic and fundamental need that supports development within each domain. The needs for safety, autonomy, inclusion, and justice provide the foundations for the self, material, social, and spiritual domains, respectively."}];
+        }
+
+        function getColumnDefinitions() {
+            return [{"columnNumber":1,"label":"Self-domain","definition":"The domain of the self (naturally) involves aspirations that concern oneself. These begin with the need for psychological safety, the need to protect the self. Once we feel safe, we can begin to explore and express our individuality, which is the need for authenticity. Once we feel safe and authentic, we can grow toward the fulfillment of our personal potential, the highest need of the self-domain."},{"columnNumber":2,"label":"Material domain","definition":"The material domain is the physical world of objects and things. It is the home of both work and play, and begins with the need for autonomy, the drive to have both the capability and authority to take effective action in the material world. Once we have a sense of autonomy, we can immerse ourselves in activity, which is the need for immersion or flow. Once we feel both empowered and productive, we can proceed to achieving material success or achievement, the highest need of the material domain."},{"columnNumber":3,"label":"Social domain","definition":"The social domain is the world of relationships with other people. Needs here begin with the need to feel a sense of belonging or connection, that we are included and accepted by our group. Once included, we can develop strong, intimate, mutually satisfying relationships, which is the need for caring. Feeling included and caring/cared for provides the platform for social recognition, validation, affirmation, and respect, which is the highest need of the social domain."},{"columnNumber":4,"label":"Spiritual domain","definition":"The spiritual domain is the world of concepts, ideals, and principles. It begins with a basic need for justice and fairness, the knowledge that good deeds are rewarded, and bad deeds are punished. Once we feel that we live in a basically fair system, we can strive to limit the self-interest of ourselves and others; balancing the needs of the planet and our society with self-interest is the essence of the need for ethics. Once we feel senses of justice and ethics, we can strive for a transcendent higher purpose, one that leaves self-interest behind. "}];
+        }
+
+        function getCellDefinitions() {
+            return [{"code":"A1","label":"Safety","positiveDefinition":"More feelings of Safety. Feeling safe and assured in the face of challenge. The desire to gain the basic sense that you have the confidence, protection, and comfort to thrive.","negativeDefinition":"Less feelings of Anxiety. Feeling anxious or unsafe in the face of challenge. The fear of losing control or being exposed to danger or deprivation."},{"code":"A2","label":"Authenticity","positiveDefinition":"More feelings of Authenticity. Feeling able to express one's distinctive individuality in the face of pressures to conform. The desire to gain the sense that you are different in a good way and can use this difference to successfully take action toward a result you desire.","negativeDefinition":"Less feelings of Conformity. The fear of losing your authentic self. The fear of losing one’s identity in the face of pressure to conform or meet others’ needs or expectations."},{"code":"A3","label":"Potential","positiveDefinition":"More feelings of Potential. Feeling that you are progressing toward self-actualization. The desire to gain the sense that you have the skill, control, and mastery to successfully become your best self.","negativeDefinition":"Less feelings of Limitation. Feeling unfulfilled or stuck in a situation that doesn’t permit growth toward one’s best self. The fear of being exposed for your inadequacies or being blocked from achieving your full potential."},{"code":"B1","label":"Autonomy","positiveDefinition":"More feelings of Autonomy. Feeling capable and competent in the face of challenge. The desire to gain the basic sense that you have the ability, resources, and authority to successfully take action toward a result you desire.","negativeDefinition":"Less feelings of Disempowerment. Feeling disempowered in the face of daily challenges. The fear of losing control over one’s daily life or lacking the ability or authority to take action to meet one’s responsibilities."},{"code":"B2","label":"Immersion","positiveDefinition":"More feelings of Immersion. Feeling fully focused and engaged in the moment. The desire to lose yourself in activity, in a state of total awareness and flow, whether mental or physical.","negativeDefinition":"Less feelings of Stagnation. Feeling stifled by or disengaged from activities. The dread of routine or boring activities that serve little purpose or provide little interest."},{"code":"B3","label":"Success","positiveDefinition":"More feelings of Success. Striving to feel a sense of achievement or accomplishment as a result of one's effort. The desire to be victorious in attaining desired results and to experience material rewards as a result.","negativeDefinition":"Less feelings of Failure. Feeling like a failure as a result of failed activities or in the face of daunting challenges. The fear of not being able to achieve desired goals and experience rewards."},{"code":"C1","label":"Inclusion","positiveDefinition":"More feelings of Inclusion. Feeling socially accepted, connected, and integrated. The desire to gain the basic sense that you belong and can develop social attachments and friendships.","negativeDefinition":"Less feelings of Exclusion. Feeling like an outcast, disconnected socially and marginalized. The fear of being denied your rightful place in your social environment."},{"code":"C2","label":"Caring","positiveDefinition":"More feelings of Caring. Feeling able to give and receive love and nurturance. The desire to feel emotional nourishment, empathy, devotion, and experience mutual gratitude.","negativeDefinition":"Less feelings of Uncaring. Feeling uncared for and feeling your caring for others is unwelcome. The fear of being unloved or uncared for."},{"code":"C3","label":"Recognition","positiveDefinition":"More feelings of Recognition. Feeling that you have achieved a status of being admired and esteemed. The desire to gain acknowledgement of your social achievements.","negativeDefinition":"Less feelings of Scorn. Feeling of being called out for failing to live up to the expectations or standards of your community. The fear of being ridiculed or scorned for a social failing."},{"code":"D1","label":"Justice","positiveDefinition":"More feelings of Justice. Feeling that you and your organization act in an honest, transparent, unbiased, and impartial manner. The desire to feel the basic sense that good is rewarded, bad is punished, and that gain goes to those most deserving of it.","negativeDefinition":"Less feelings of Injustice. Feeling that you or your organization act in a dishonest, biased, unjust manner. The fear of facing an environment that lacks a basic sense of justice, where bad acts are not punished, and people are not treated equally."},{"code":"D2","label":"Ethics","positiveDefinition":"More feelings of Ethics. Feeling that you and your organization act in accordance with a set of moral principles or universal values. The desire to feel that one (and one's organization) acts in accordance with principled best practices and highest ethical standards.","negativeDefinition":"Less feelings of Wrongdoing. Feeling that you or your organization acts unethically. The fear of committing acts oneself or being exposed to acts by others that don’t live up to moral standards."},{"code":"D3","label":"Purpose","positiveDefinition":"More feelings of Purpose. Having a more meaningful reason to live, work, and exist than satisfying material needs. The desire to transcend the ordinary limitations of everyday life toward a higher, even spiritual, purpose.","negativeDefinition":"Less feelings of Materialism. Holding material desires above others. The fear of leading a life without meaning or higher purpose."}];
+        }
+
+        function getEmotionalActivationLevelDefinitions() {
+            return [{"level":0,"definition":"Undetectable need"},{"level":1,"definition":"Slight need"},{"level":2,"definition":"Moderate need"},{"level":3,"definition":"Elevated need"},{"level":4,"definition":"Strongest need"}];
+        }
+
+        function getPieLabels() {
+            return [{"positiveCount":3,"negativeCount":3,"label":"Equal"},{"positiveCount":2,"negativeCount":2,"label":"Equal"},{"positiveCount":1,"negativeCount":1,"label":"Equal"},{"positiveCount":0,"negativeCount":0,"label":"n/a"},{"positiveCount":3,"negativeCount":2,"label":"More Promotion"},{"positiveCount":2,"negativeCount":1,"label":"More Promotion"},{"positiveCount":2,"negativeCount":3,"label":"More Prevention"},{"positiveCount":1,"negativeCount":2,"label":"More Prevention"},{"positiveCount":3,"negativeCount":1,"label":"Mostly Promotion"},{"positiveCount":1,"negativeCount":3,"label":"Mostly Prevention"},{"positiveCount":1,"negativeCount":0,"label":"All Promotion"},{"positiveCount":2,"negativeCount":0,"label":"All Promotion"},{"positiveCount":3,"negativeCount":0,"label":"All Promotion"},{"positiveCount":0,"negativeCount":1,"label":"All Prevention"},{"positiveCount":0,"negativeCount":2,"label":"All Prevention"},{"positiveCount":0,"negativeCount":3,"label":"All Prevention"}];
+        }
+
+        function getConfiguration() {
+            var c = {"name":"Akash","email":"Test@t.com","title":"<i>Agile</i>Brain Profile","sentenceIntro":"Your prompt sentence...","sentenceCompletionTask":"When I think about my current situation, I wish I could feel a little more/less...","instructions":"<div class='row center'>\n<div class='col-1'></div>\n<div class='col-10 header'><img src='https://content.leadingindicator.com/Images/agilebrain2/AgileBrainKey.png' alt='AgileBrain Legend' width='75%'></div>\n</div>","feedbackIntroHeader":"Putting Words to Your Emotions","feedbackIntro":"Putting words to our emotions can be a challenging task. Often, we don’t know how we feel or we’re uncomfortable talking about how we feel. Here are some words for each of your strongest emotional responses. Try them on for size. What resonates with you?","emotionsColumnHeader":"Strongest Responses","feedbackColumnHeader":"How you might experience these emotions...","prescriptionIntroHeader":"Reflecting on Your Emotions","prescriptionIntro":"Once you’ve put words to your emotions, you can begin examining them in more detail. Spend some time identifying activities, behaviors, situations that may contribute to your emotional needs (positive or negative). The paragraphs below may help with that reflection.","prescriptionColumnHeader":"How you might reflect and redirect on these emotions...","yourReflectionsIntroHeader":"Documenting Your Reflections","yourReflectionsIntro":"Use the space below to jot down notes. What resonated with you? What didn’t? What could help you move forward? What’s holding you back? What positive steps could you take now? What steps will take more time and effort? Share your thoughts with a coach or mentor","yourReflectionsColumnHeader":"What am I taking away from this exercise...","yourReflectionsAdditionalCategory":"Other Reflections","summary":"<div class='row center'>\n<div class='col-12 header'>Now What?</div>\n</div>\n\n<div class='row'>\n<div class='col-12 description'>We hope you've found your <i>Agile</i>Brain results helpful in making you more aware of your emotional and motivational needs. You may want to consider these next steps as you continue your journey of self-awareness and growth:</div>\n</div>\n\n<div class='row'>\n<div class='col-12 description'>\n\n<ul>\n\n<li><a href='#top'>Return to your results</a> to consider what you might take away from them</li>\n<li><a href='#interpretation' data-toggle='tab' onclick='changeActiveTab(\"#interpretationTab\")'>Watch the Interpreting Your Results video</a></li>\n<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab(\"#shareTab\")'>Save your results</a> so you can revisit them again after a few days of reflection</li>\n<li class='HideFromVisitors'><a href='#shareDialog' data-toggle='tab' onclick='changeActiveTab(\"#shareTab\")'>Share your results</a> with someone you trust</li>\n<li><a href='#contactUsDialog' data-toggle='tab' onclick='changeActiveTab(\"#contactUsTab\")'>Seek help</a> if you feel anxious or desire positive change in your life</li>\n<li>Take <i>Agile</i>Brain again after you've done some work on your journey or when a major life event merits touching base with your emotional / motivational needs</li>\n\n</ul></div>\n</div>\n\n<div class='row'>\n<div class='col-12 description'>We're all on a journey; <i>Agile</i>Brain is here to help along the way.</div><div class='printButtonContainer excludeFromLandscapePrinting excludeFromPrinting'><button type='button' class='printButton' onclick='window.print();return false;'>Print My Report</button></div>","submissionDate":"2/17/2023","about":"<div class='container feedback excludeFromPrinting'>\n\n<br><hr class='hr-separator'>\n\n<div class='row center'>\n<div class='col-12 description'><a target=\"_blank\" href=\"https://connect.leadingindicator.com/lp/agilebrain-coach-learn-more\"><img src=\"https://content.leadingindicator.com/Images/AB_AdPanel.png\" alt=\"Are you a professional coach? Learn how AgileBrain can help you build better coaching plans.\" width=\"99%\"></a><br><br></div>\n</div>\n\n<div class='row center'>\n<div class='LineCopyright'>Copyright © 2022-2023 Leading Indicator Systems. All rights reserved.\n\n<br>\n\nPrivacy Policy\n\n&nbsp;&nbsp;&nbsp;&nbsp;&#124;&nbsp;&nbsp;&nbsp;&nbsp;\n\nTerms of Service\n\n</div></div>\n\n</div>","activationMessage":""};
+            var name = $('#hiddenName').val();
+            if (name != '' && name != null) {
+                c.name = name;
+            }
+            var email = $('#hiddenEmail').val();
+            if (email != '' && email != null) {
+                c.email = email;
+            }
+            return c;
+        }
+
+    </script>
+    
+
+    <script type="text/javascript">
+    var util = new Object();
+    util.getHeader = function(ts)
+    {
+        var header = new Object();
+        header.WebServiceAuthorizationGuid = '9605ee3e-c8b8-4852-8e4f-cfefebb72c50';
+        header.Eid = 52;
+        header.UserId = 15648;
+        header.ProjectId = 1;
+        header.LanguageId = 1;
+        header.CultureIdentifier = 'en-US';
+        header.DateTimeFormat = '';
+        header.Timestamp = ts;
+        return header;
+    };
+
+    var session = new Object();
+    session.selectedEvent = null;
+    session.dropDownPrompt = '-- Choose --';
+    session.pollingMessage = 'Updating...';
+    session.isOnline = null;
+    session.defaultWebServiceTimeout = 120000;
+    session.changedCounter = 0;
+    session.portal = new Object();
+    session.portal.css = null
+    session.portal.statusEventSortList = [[0,0]];
+    session.portal.statusEventDataSortList = [[0,0]];
+    session.portal.statusEventDataSortList2 = [[0,0]];
+    session.portal.eventReviewSortList = [[0,0]];
+    session.portal.eventReviewDataSortList = [[0,0]];
+    session.portal.eventReviewDataSortList2 = [[0,0]];
+    session.portal.debug = false;
+    session.portal.css = '';
+    session.portal.css = session.portal.css + '.lis-survey { background-color: #1B918E; }';
+    session.portal.css = session.portal.css + '.lis-survey-part { background-color: white; }';
+    session.portal.css = session.portal.css + '.lis-item-tag { color: #44555f; font-size: 0.9em; text-align: left; width: 0px; }';
+    session.portal.css = session.portal.css + '.lis-wrapper-text { padding: 7px 0px 7px 0px; vertical-align: top; }';
+    session.portal.css = session.portal.css + '.lis-item-text { color: #44555f; font-size: 2.5em; text-align: left; width: 100%; }';
+    session.portal.css = session.portal.css + '.lis-section-header { padding: 3px 0px 0px 0px; }';
+    session.portal.css = session.portal.css + '.lis-section-secondchance { color: Black; font-size: 1.5em; font-weight: bold; text-align: center;}';
+    session.portal.css = session.portal.css + 'table.pseudoscale td:nth-child(1) { background-image: url(https://app.leadingindicator.com/portalux/smaller-chalk-texture.jpg) !important; }';
+    session.portal.css = session.portal.css + 'table.pseudoscale td:nth-child(5) { background-image: url(https://app.leadingindicator.com/portalux/smaller-chalk-texture.jpg) !important; }';
+    session.portal.css = session.portal.css + 'textarea.lis-open-end { font-family: Arial, Verdana; font-size: 1.8em; background-color: #EEEEEE !important; padding: 3px 9px !important; border-radius: 5px !important; }';
+    session.portal.css = session.portal.css + 'td.lis-open-end { text-align: center }';
+    session.portal.css = session.portal.css + 'td.lis-wrapper-tag { width: 0px; padding: 0px; }';
+    session.portal.css = session.portal.css + '.lis-button-container { width: 760px; margin-top: 35px !important; }';
+    session.portal.css = session.portal.css + '.lis-button-container table:first-child { margin: auto; border: 0px;}';
+    session.portal.css = session.portal.css + 'button';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + '    border-radius: 5px !important;';
+    session.portal.css = session.portal.css + '    padding: 6px 12px !important;';
+    session.portal.css = session.portal.css + '    cursor: pointer;';
+    session.portal.css = session.portal.css + '    color: #fff !important;';
+    session.portal.css = session.portal.css + '    background-color: #f04e3e !important;';
+    session.portal.css = session.portal.css + '    font-size: 1.0rem !important;';
+    session.portal.css = session.portal.css + '    font-weight: bold !important;';
+    session.portal.css = session.portal.css + '    border: 1px solid #FFFFFF !important;';
+    session.portal.css = session.portal.css + '    text-decoration: none !important;';
+    session.portal.css = session.portal.css + '    transition-duration: 0.5s;';
+    session.portal.css = session.portal.css + '    -webkit-transition-duration: 0.5s;';
+    session.portal.css = session.portal.css + '    -moz-transition-duration: 0.5s;';
+    session.portal.css = session.portal.css + '    text-align: center;';
+    session.portal.css = session.portal.css + '    margin-right: 6px;';
+    session.portal.css = session.portal.css + '    text-overflow: ellipsis;';
+    session.portal.css = session.portal.css + '    white-space: nowrap;';
+    session.portal.css = session.portal.css + '    overflow: hidden;';
+    session.portal.css = session.portal.css + '    height: 30px !important;';
+    session.portal.css = session.portal.css + '    -webkit-appearance: none;';
+    session.portal.css = session.portal.css + '    -moz-appearance: none;';
+    session.portal.css = session.portal.css + '    appearance: none;';
+    session.portal.css = session.portal.css + '    opacity: 1;';
+    session.portal.css = session.portal.css + '}';
+    session.portal.css = session.portal.css + 'button:hover';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + '    background-color: firebrick !important;';
+    session.portal.css = session.portal.css + '    border: 1px solid firebrick !important;';
+    session.portal.css = session.portal.css + '}';
+    session.portal.css = session.portal.css + 'input[type=radio]';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + '    transform: scale(3);';
+    session.portal.css = session.portal.css + '    margin-top: 2px;';
+    session.portal.css = session.portal.css + '}';
+    session.portal.css = session.portal.css + '.lis-section-copyright ';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + '    padding-bottom: 6px;';
+    session.portal.css = session.portal.css + '}';
+    session.portal.css = session.portal.css + '.ui-tabs-nav';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + 'display: none;';
+    session.portal.css = session.portal.css + '}';
+    session.portal.css = session.portal.css + 'ul.ui-tabs-nav>li#IndividualRatersList a, ul.ui-tabs-nav>li#GroupRatersList a';
+    session.portal.css = session.portal.css + '{';
+    session.portal.css = session.portal.css + '    font-size: .8em !important;';
+    session.portal.css = session.portal.css + '}';
+    session.relationshipSummary = new Object();
+    session.relationshipSummary.sortList = [[0,0]];
+    session.relationshipSummary.deletePrompt = "Are you sure you want to completely remove relationship '{0}'?"
+    session.relationshipSummary.pingTimerID = null;
+    session.relationshipSummary.pingTimeout = 5000;
+    session.relationshipSummary.pingPollingInterval = 5000;
+    session.relationshipSummary.pollingTimerID = null;
+    session.relationshipSummary.pollingInterval = 30000;
+    session.relationshipSummary.pollingTimeout = 200000;
+    session.relationshipSummary.ageTimerID = null;
+    session.relationshipSummary.ageUpdateInterval = 1000;
+    session.relationshipSummary.dataLastCheckedOn = null;
+    session.relationshipSummary.dataLastUpdatedOn = null;
+    session.eventSummary = new Object();
+    session.eventSummary.sortList = [[0,0]];
+    session.eventSummary.deletePrompt = "Are you sure you want to completely remove event '{0}'?"
+    session.eventSummary.pingTimerID = null;
+    session.eventSummary.pingTimeout = 5000;
+    session.eventSummary.pingPollingInterval = 5000;
+    session.eventSummary.pollingTimerID = null;
+    session.eventSummary.pollingInterval = 30000;
+    session.eventSummary.pollingTimeout = 20000;
+    session.eventSummary.ageTimerID = null;
+    session.eventSummary.ageUpdateInterval = 1000;
+    session.eventSummary.dataLastCheckedOn = null;
+    session.eventSummary.dataLastUpdatedOn = null;
+    session.participantSummary = new Object();
+    session.participantSummary.sortList = [[0,0]];
+    session.participantSummary.deletePrompt = "Are you sure you want to completely remove participant '{0}'?"
+    session.participantSummary.warningEventIsOpen = "Clicking the 'Save' button will cause the participant to be added with an 'Opened' status.\n\nNote: Scheduled emails and activities that have already occurred are not retroactively processed for this participant."
+    session.participantSummary.movePrompt = "Move participant '{0}' to "
+    session.participantSummary.frameTitle = "Participant Summary<br/>for Event '{0}'"
+    session.participantSummary.pollingTimerID = null;
+    session.participantSummary.pollingInterval = 30000;
+    session.participantSummary.pollingTimeout = 20000;
+    session.participantSummary.ageTimerID = null;
+    session.participantSummary.ageUpdateInterval = 1000;
+    session.participantSummary.dataLastCheckedOn = null;
+    session.participantSummary.dataLastUpdatedOn = null;
+    session.raterSummary = new Object();
+    session.raterSummary.sortList = [[0,0]];
+    session.raterSummary.deletePrompt = "Are you sure you want to completely remove rater '{0}'?"
+    session.raterSummary.warningEventIsOpen = "Clicking the 'Save' button will cause the rater to be added with an 'Opened' status.\n\nNote: Scheduled emails and activities that have already occurred are not retroactively processed for this rater."
+    session.raterSummary.frameTitle = "Rater Summary<br/>for Participant '{0}'<br/>in Event '{1}'"
+    session.raterSummary.pollingTimerID = null;
+    session.raterSummary.pollingInterval = 30000;
+    session.raterSummary.pollingTimeout = 20000;
+    session.raterSummary.ageTimerID = null;
+    session.raterSummary.ageUpdateInterval = 1000;
+    session.raterSummary.dataLastCheckedOn = null;
+    session.raterSummary.dataLastUpdatedOn = null;
+    session.raterResponsibilities = new Object();
+    session.raterResponsibilities.sortList = [[0,0]];
+    session.raterResponsibilities.frameTitle = "Responsibilities Summary<br/>for Rater '{0}'"
+    session.raterResponsibilities.pollingTimerID = null;
+    session.raterResponsibilities.pollingInterval = 30000;
+    session.raterResponsibilities.pollingTimeout = 20000;
+    session.raterResponsibilities.ageTimerID = null;
+    session.raterResponsibilities.ageUpdateInterval = 1000;
+    session.raterResponsibilities.dataLastCheckedOn = null;
+    session.raterResponsibilities.dataLastUpdatedOn = null;
+    session.eventManagement = new Object();
+    session.eventManagement.frameTitle = "Event Properties<br/>for '{0}'";
+    session.eventManagement.emailManagerReportsNowPrompt = "Email manager all reports now";
+    session.eventManagement.emailManagerReportsWhenReadyPrompt = "Email managers all reports per 'Reports Ready For' schedule";
+    session.eventManagement.emailConsultantReportsNowPrompt = "Email consultant all reports now";
+    session.eventManagement.emailConsultantReportsWhenReadyPrompt = "Email consultant all reports per 'Reports Ready For' schedule";
+    session.eventManagement.emailClientContactReportsNowPrompt = "Email client contact all reports now";
+    session.eventManagement.emailClientContactReportsWhenReadyPrompt = "Email client contact all reports per 'Reports Ready For' schedule";
+    session.eventManagement.emailReportContactReportsNowPrompt = "Email report contact all reports now";
+    session.eventManagement.emailReportContactReportsWhenReadyPrompt = "Email report contact all reports per 'Reports Ready For' schedule";
+    session.eventManagement.emailParticipantsReportNowPrompt = "Email all participants their reports now";
+    session.eventManagement.emailParticipantsReportWhenReadyPrompt = "Email all participants their reports per 'Reports Ready For' schedule";
+    session.eventManagement.comparisonGroup1Prompt = "Show group comparison";
+    session.eventManagement.comparisonGroup2Prompt = "Show organization comparison";
+    session.eventManagement.comparisonGroup3Prompt = "Show benchmark comparison";
+    session.eventManagement.comparisonGroup2WaveOptionPrompt = "Compute scores based on Wave";
+    session.eventManagement.comparisonGroup2WaveVersionOptionPrompt = "Compute scores based on Wave and Version";
+    session.eventManagement.openEndedOption1Prompt = "Show open ended feedback by rating category";
+    session.eventManagement.openEndedOption2Prompt = "Show open ended feedback by manager and all others";
+    session.eventManagement.openEndedOption3Prompt = "Show open ended feedback uncategorized";
+    session.eventManagement.showOverallRelationshipPrompt = "Add an Overall Rating Category";
+    session.eventManagement.autoCompletionScope = new Array();
+    session.eventManagement.autoCompletionScope[0] = "All Known Persons";
+    session.eventManagement.autoCompletionScope[1] = "Persons Associated with this Wave";
+    session.eventManagement.autoCompletionScope[2] = "Persons Associated with this Wave and Version";
+    session.eventManagement.autoCompletionScope[3] = "Persons Associated with this Event";
+    session.participantManagement = new Object();
+    session.participantManagement.frameTitle = "Participant Properties<br/>for '{0}'";
+    session.participantManagement.emailParticipantReportNowPrompt = "Email participant their report now";
+    session.participantManagement.emailParticipantReportWhenReadyPrompt = "Email participant their report per 'Reports Ready For' schedule";
+    session.participantManagement.generatePreliminaryReportWithClosePrompt = "Close participant from additional ratings and generate preliminary report"
+    session.participantManagement.generatePreliminaryReportWithoutClosePrompt = "Generate preliminary report"
+    session.raterManagement = new Object();
+    session.raterManagement.frameTitle = "Rater Properties<br/>for '{0}'"
+    session.errorMessages = new Object();
+    session.errorMessages.badSyntax = 'Bad Email Address';
+    session.errorMessages.badDomain = 'Bad Domain'
+    session.errorMessages.unsupportedDomain = 'Domain Not Supported'
+    session.selectableTimes = new Array();
+    var i = 0;
+    session.selectableTimes[i++] = "12:00 AM";
+    session.selectableTimes[i++] = "6:00 AM";
+    session.selectableTimes[i++] = "6:15 AM";
+    session.selectableTimes[i++] = "6:30 AM";
+    session.selectableTimes[i++] = "6:45 AM";
+    session.selectableTimes[i++] = "7:00 AM";
+    session.selectableTimes[i++] = "7:15 AM";
+    session.selectableTimes[i++] = "7:30 AM";
+    session.selectableTimes[i++] = "7:45 AM";
+    session.selectableTimes[i++] = "8:00 AM";
+    session.selectableTimes[i++] = "8:15 AM";
+    session.selectableTimes[i++] = "8:30 AM";
+    session.selectableTimes[i++] = "8:45 AM";
+    session.selectableTimes[i++] = "9:00 AM";
+    session.selectableTimes[i++] = "9:15 AM";
+    session.selectableTimes[i++] = "9:30 AM";
+    session.selectableTimes[i++] = "9:45 AM";
+    session.selectableTimes[i++] = "10:00 AM";
+    session.selectableTimes[i++] = "10:15 AM";
+    session.selectableTimes[i++] = "10:30 AM";
+    session.selectableTimes[i++] = "10:45 AM";
+    session.selectableTimes[i++] = "11:00 AM";
+    session.selectableTimes[i++] = "11:15 AM";
+    session.selectableTimes[i++] = "11:30 AM";
+    session.selectableTimes[i++] = "11:45 AM";
+    session.selectableTimes[i++] = "12:00 PM";
+    session.selectableTimes[i++] = "12:15 PM";
+    session.selectableTimes[i++] = "12:30 PM";
+    session.selectableTimes[i++] = "12:45 PM";
+    session.selectableTimes[i++] = "1:00 PM";
+    session.selectableTimes[i++] = "1:15 PM";
+    session.selectableTimes[i++] = "1:30 PM";
+    session.selectableTimes[i++] = "1:45 PM";
+    session.selectableTimes[i++] = "2:00 PM";
+    session.selectableTimes[i++] = "2:15 PM";
+    session.selectableTimes[i++] = "2:30 PM";
+    session.selectableTimes[i++] = "2:45 PM";
+    session.selectableTimes[i++] = "3:00 PM";
+    session.selectableTimes[i++] = "3:15 PM";
+    session.selectableTimes[i++] = "3:30 PM";
+    session.selectableTimes[i++] = "3:45 PM";
+    session.selectableTimes[i++] = "4:00 PM";
+    session.selectableTimes[i++] = "4:15 PM";
+    session.selectableTimes[i++] = "4:30 PM";
+    session.selectableTimes[i++] = "4:45 PM";
+    session.selectableTimes[i++] = "5:00 PM";
+    session.selectableTimes[i++] = "5:15 PM";
+    session.selectableTimes[i++] = "5:30 PM";
+    session.selectableTimes[i++] = "5:45 PM";
+    session.selectableTimes[i++] = "6:00 PM";
+    session.selectableTimes[i++] = "6:15 PM";
+    session.selectableTimes[i++] = "6:30 PM";
+    session.selectableTimes[i++] = "6:45 PM";
+    session.selectableTimes[i++] = "7:00 PM";
+    session.selectableTimes[i++] = "7:15 PM";
+    session.selectableTimes[i++] = "7:30 PM";
+    session.selectableTimes[i++] = "7:45 PM";
+    session.selectableTimes[i++] = "8:00 PM";
+    session.selectableTimes[i++] = "8:15 PM";
+    session.selectableTimes[i++] = "8:30 PM";
+    session.selectableTimes[i++] = "8:45 PM";
+    session.selectableTimes[i++] = "9:00 PM";
+    session.selectableTimes[i++] = "9:15 PM";
+    session.selectableTimes[i++] = "9:30 PM";
+    session.selectableTimes[i++] = "9:45 PM";
+    session.selectableTimes[i++] = "10:00 PM";
+    session.selectableTimes[i++] = "10:15 PM";
+    session.selectableTimes[i++] = "10:30 PM";
+    session.selectableTimes[i++] = "10:45 PM";
+    session.selectableTimes[i++] = "11:00 PM";
+    session.selectableTimes[i++] = "11:15 PM";
+    session.selectableTimes[i++] = "11:30 PM";
+    session.selectableTimes[i++] = "11:45 PM";
+    session.selectableTimes[i++] = "11:59 PM";
+    session.dayOfWeek = new Array();
+    session.dayOfWeek[0] = "Sun";
+    session.dayOfWeek[1] = "Mon";
+    session.dayOfWeek[2] = "Tue";
+    session.dayOfWeek[3] = "Wed";
+    session.dayOfWeek[4] = "Thu";
+    session.dayOfWeek[5] = "Fri";
+    session.dayOfWeek[6] = "Sat";
+
+    function mySession()
+    {
+        return session;
+    }
+
+    function myUtil()
+    {
+        return util;
+    }
+
+    function dataChanged()
+    {
+        for (var i in data)
+        {
+            if (this.id == data[i].id)
+            {
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].id).removeClass('changed');
+                    mySession().changedCounter--;
+                }
+                setCurrentValue(data[i]);
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].id).addClass('changed');
+                    mySession().changedCounter++;
+                }
+                break;
+            }
+        }
+        if (mySession().changedCounter > 0)
+        {
+            $('.contextualButton').attr("disabled", false);
+        }
+        else
+        {
+            $('.contextualButton').attr("disabled", true);
+        }
+    }
+    function dateTimeDataChanged()
+    {
+        for (var i in data)
+        {
+            if (this.id == data[i].dateId || this.id == data[i].timeId)
+            {
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].dateId).removeClass('changed');
+                    $('#' + data[i].timeId).removeClass('changed');
+                    mySession().changedCounter--;
+                }
+                if ($('#' + data[i].dateId).val() == '')
+                    data[i].currentValue = null;
+                else if ($('#' + data[i].timeId).val() == '')
+                    data[i].currentValue = $('#' + data[i].dateId).val();
+                else
+                    data[i].currentValue = $('#' + data[i].dateId).val() + ' ' + $('#' + data[i].timeId).val();
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].dateId).addClass('changed');
+                    $('#' + data[i].timeId).addClass('changed');
+                    mySession().changedCounter++;
+                }
+                if ($('#' + data[i].dateId).val() != '')
+                    $('#' + data[i].timeId).removeClass('hidden');
+                else
+                    $('#' + data[i].timeId).addClass('hidden');
+                $('#' + data[i].dayId).html(getDayOfWeek($('#' + data[i].dateId).val()));
+                break;
+            }
+        }
+        if (mySession().changedCounter > 0)
+        {
+            $('.contextualButton').attr("disabled", false);
+        }
+        else
+        {
+            $('.contextualButton').attr("disabled", true);
+        }
+        showSchedule();
+    }
+    function idVersionDataChanged()
+    {
+        for (var i in data)
+        {
+            if (this.id == data[i].idId || this.id == data[i].versionId)
+            {
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].idId).removeClass('changed');
+                    $('#' + data[i].versionId).removeClass('changed');
+                    mySession().changedCounter--;
+                }
+                if ($('#' + data[i].idId).val() == '')
+                    data[i].currentValue = null;
+                else if ($('#' + data[i].versionId).val() == '')
+                    data[i].currentValue = $('#' + data[i].idId).val();
+                else
+                    data[i].currentValue = $('#' + data[i].idId).val() + '.' + $('#' + data[i].versionId).val();
+                if (data[i].currentValue != data[i].initialValue)
+                {
+                    $('#' + data[i].idId).addClass('changed');
+                    $('#' + data[i].versionId).addClass('changed');
+                    mySession().changedCounter++;
+                }
+                break;
+            }
+        }
+        if (mySession().changedCounter > 0)
+        {
+            $('.contextualButton').attr("disabled", false);
+        }
+        else
+        {
+            $('.contextualButton').attr("disabled", true);
+        }
+    }
+    function getDayOfWeek(myDate)
+    {
+        var ms = Date.parse(myDate);
+        if (isNaN(ms)) return '';
+        return mySession().dayOfWeek[new Date(ms).getDay()];
+    }
+</script>
+    
+    <input type="hidden" id="titleTextSection" value="AgileBrain" />
+    <input type="hidden" id="htmlHeadElements" value="<link rel='icon' type='image/x-icon' href='https://content.leadingindicator.com/Images/favicon.ico'>" />
+    <input type="hidden" id="styleSheetOverride" value="" />
+    
+    
+    <input type="hidden" id="hiddenName" value="Akash" />
+    <input type="hidden" id="hiddenEmail" value="Test@t.com" />
+    <input type="hidden" id="hiddenCbCoachSubscription" value="" />
+    <input type="hidden" id="hiddenCbEmotionsSubscription" value="checked" />
+</body>
+</html>
+

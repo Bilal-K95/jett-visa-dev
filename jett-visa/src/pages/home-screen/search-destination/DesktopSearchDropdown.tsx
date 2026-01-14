@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import SearchIcon2 from "@/assets/images/icons/search.png";
 // import type { PendingAction } from "@pages/home-screen/HomeScreen";

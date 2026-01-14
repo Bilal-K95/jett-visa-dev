@@ -162,7 +162,7 @@ const NationalityResidencySelector = ({
     item.name.toLowerCase().includes(search.toLowerCase())
   );
   return (
-    <div className="relative w-full max-w-4xl mx-auto z-50">
+    <div className="relative w-half max-w-4xl mx-auto z-50">
       {/* Main pill */}
       <div className="flex items-center justify-between rounded-full bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-md px-6 py-4 shadow-sm">
         

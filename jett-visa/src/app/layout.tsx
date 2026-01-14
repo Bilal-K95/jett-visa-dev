@@ -1,5 +1,7 @@
 import I18nProvider from "@/components/I18nProvider";
+import ReduxProvider from "@/components/ReduxProvider";
 import "@/app/globals.css";
+import AppInit from "./providers/AppInit";
 
 export default function RootLayout({
   children,
@@ -9,7 +11,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-white text-black">
-        <I18nProvider>{children}</I18nProvider>
+        <ReduxProvider>
+          <I18nProvider>
+            <AppInit />
+            {children}</I18nProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
